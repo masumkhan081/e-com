@@ -1,0 +1,35 @@
+/* eslint-disable no-unused-vars */
+const { Schema, model } = require("mongoose");
+
+const shippingDeliverySchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: [true, "Title is required."],
+      minlength: [10, "Title must be at least 10 characters long."],
+      maxlength: [100, "Title must be at most 100 characters long."],
+    },
+    content: {
+      type: String,
+      required: [true, "Content is required."],
+      minlength: [50, "Content must be at least 50 characters long."],
+      maxlength: [5000, "Content must be at most 5000 characters long."],
+    },
+    is_active: {
+      type: Boolean,
+      default: true, // Set default to true if the policy is active by default
+    },
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+    toJSON: { virtuals: true },
+  }
+);
+
+const ShippingDelivery = model(
+  "shipping_delivery_policy",
+  shippingDeliverySchema
+);
+
+module.exports = ShippingDelivery;
