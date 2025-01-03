@@ -1,16 +1,28 @@
 {
-  "name": "tourism-starter",
+  "name": "backend-ready-ecommerce",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
+    "start": "tsc && node dist/index.js",
+    "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\"",
+    "d1": "tsc --watch",
+    "d2": "node dist/index.js",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/index.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prettier": "prettier --check **/*.js",
-    "prettier:fix": "prettier --write **/*.js"
+    "prepare": "husky install",
+    "eslint": "eslint . --fix",
+    "check-types": "tsc --noEmit",
+    "lint": "npm run eslint && npm run check-types"
   },
-  "type": "commonjs",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "**/*.ts": "eslint --fix",
+    "**/*.js": "eslint --fix"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -36,9 +48,20 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",
-    "eslint": "^9.6.0",
-    "globals": "^15.8.0",
     "nodemon": "^3.1.4",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/crypto-js": "^4.2.2",
+    "@types/express": "^5.0.0",
+    "@types/http-status": "^0.2.30",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.10.0",
+    "@types/nodemailer": "^6.4.17",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0",
+    "husky": "^8.0.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.16.0"
   }
 }
