@@ -2,49 +2,49 @@
 import { Router } from "express";
 const router = Router();
 //    auth & profiles
-import authRoutes from "./module/user/user.route";
-import customerRoutes from "./module/profile/customer-profile/customer.route";
-import riderRoutes from "./module/profile/rider-profile/rider.route";
-import sellerRoutes from "./module/profile/seller-profile/profile.route";
+import authRoutes from "./modules/user/user.route";
+import customerRoutes from "./modules/profile/customer-profile/customer.route";
+import riderRoutes from "./modules/profile/rider-profile/rider.route";
+import sellerRoutes from "./modules/profile/seller-profile/profile.route";
 //  business setting - admin
-import generalSettingRoutes from "./module/business-setting/general-setting/generalSetting.route";
-import businessSettingRoutes from "./module/business-setting/business-setup/businessSetup.route";
-import shopSettingRoutes from "./module/business-setting/shop-setup/shopSetup.route";
-import withdrawSettingRoutes from "./module/business-setting/withdraw-setup/withdrawSetup.route";
-import delChargeRoutes from "./module/business-setting/delivery-charge/delCharge.route";
-import themeColorRoutes from "./module/business-setting/theme-color/themeColor.route";
-import quickLinkRoutes from "./module/business-setting/quick-link/quickLink.route";
-import socialLinkRoutes from "./module/business-setting/social-link/socialLink.route";
-import tktTypeRoutes from "./module/business-setting/ticket-issue-type/tktType.route";
+import generalSettingRoutes from "./modules/business-setting/general-setting/generalSetting.route";
+import businessSettingRoutes from "./modules/business-setting/business-setup/businessSetup.route";
+import shopSettingRoutes from "./modules/business-setting/shop-setup/shopSetup.route";
+import withdrawSettingRoutes from "./modules/business-setting/withdraw-setup/withdrawSetup.route";
+import delChargeRoutes from "./modules/business-setting/delivery-charge/delCharge.route";
+import themeColorRoutes from "./modules/business-setting/theme-color/themeColor.route";
+import quickLinkRoutes from "./modules/business-setting/quick-link/quickLink.route";
+import socialLinkRoutes from "./modules/business-setting/social-link/socialLink.route";
+import tktTypeRoutes from "./modules/business-setting/ticket-issue-type/tktType.route";
 // third-party config routes - admin
-import mailSettingsRoute from "./module/third-party/mail-config/mailConfig.route";
-import smsSettingsRoutes from "./module/third-party/sms-gateway/smsGateway.route";
-import paymentSettingRoutes from "./module/third-party/payment-gateway/paymentGateway.route";
+import mailSettingsRoute from "./modules/third-party/mail-config/mailConfig.route";
+import smsSettingsRoutes from "./modules/third-party/sms-gateway/smsGateway.route";
+import paymentSettingRoutes from "./modules/third-party/payment-gateway/paymentGateway.route";
 //  promotion management - admin
-import adRoutes from "./module/promo-admin/ad/ad.route";
-import bannerRoutes from "./module/promo-admin/banner/banner.route";
+import adRoutes from "./modules/promo-admin/ad/ad.route";
+import bannerRoutes from "./modules/promo-admin/banner/banner.route";
 //  promotion management - seller
-import shopBannerRoutes from "./module/shop/shop-banner/banner.route";
+import shopBannerRoutes from "./modules/shop/shop-banner/banner.route";
 //  product & shop related routes - seller part
-import shopRoutes from "./module/shop/shop.route";
-import categoryRoutes from "./module/product/category/category.route";
-import subCategoryRoutes from "./module/product/sub-category/subCategory.route";
-import colorRoutes from "./module/product/color/color.route";
-import sizeRoutes from "./module/product/size/size.route";
-import unitRoutes from "./module/product/unit/unit.route";
-import brandRoutes from "./module/product/brand/brand.route";
-import productRoutes from "./module/product/product/product.route";
+import shopRoutes from "./modules/shop/shop.route";
+import categoryRoutes from "./modules/product/category/category.route";
+import subCategoryRoutes from "./modules/product/sub-category/subCategory.route";
+import colorRoutes from "./modules/product/color/color.route";
+import sizeRoutes from "./modules/product/size/size.route";
+import unitRoutes from "./modules/product/unit/unit.route";
+import brandRoutes from "./modules/product/brand/brand.route";
+import productRoutes from "./modules/product/product/product.route";
 //  legal-pages routes
-import privacyPolicyRoutes from "./module/legal-pages/privacy-policy/privacyPolicy.route";
-import termsConditionRoutes from "./module/legal-pages/terms-and-condition/termCondition.route";
-import returnRefundPolicyRoutes from "./module/legal-pages/return-and-refund/returnRefund.route";
-import shippingDeliveryRoutes from "./module/legal-pages/shipping-and-delivery/shippingDelivery.route";
-import aboutUsRoutes from "./module/legal-pages/about-us/aboutUs.route";
-import contactUsRoutes from "./module/legal-pages/contact-us/contactUs.route";
+import privacyPolicyRoutes from "./modules/legal-pages/privacy-policy/privacyPolicy.route";
+import termsConditionRoutes from "./modules/legal-pages/terms-and-condition/termCondition.route";
+import returnRefundPolicyRoutes from "./modules/legal-pages/return-and-refund/returnRefund.route";
+import shippingDeliveryRoutes from "./modules/legal-pages/shipping-and-delivery/shippingDelivery.route";
+import aboutUsRoutes from "./modules/legal-pages/about-us/aboutUs.route";
+import contactUsRoutes from "./modules/legal-pages/contact-us/contactUs.route";
 //
-import cartRoutes from "./module/pos/cart/cart.route";
-import orderRoutes from "./module/pos/order/order.route";
-import couponRoutes from "./module/pos/coupon/coupon.route";
+import cartRoutes from "./modules/pos/cart/cart.route";
+import orderRoutes from "./modules/pos/order/order.route";
+import couponRoutes from "./modules/pos/coupon/coupon.route";
 //
 const routes = [
   {
