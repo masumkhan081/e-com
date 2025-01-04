@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 //
 const quickLinkSchema = new Schema(
   {
@@ -24,4 +24,4 @@ const quickLinkSchema = new Schema(
 
 const QuickLink = model("quick_links", quickLinkSchema);
 
-module.exports = QuickLink;
+export default QuickLink;

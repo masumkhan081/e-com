@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const brandSchema = z.object({
   name: z
@@ -36,4 +36,4 @@ const brandUpdateSchema = z.object({
 //   }),
 // });
 
-module.exports = { brandSchema, brandUpdateSchema };
+export default { brandSchema, brandUpdateSchema };

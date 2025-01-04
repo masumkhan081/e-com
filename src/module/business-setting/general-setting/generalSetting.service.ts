@@ -1,10 +1,10 @@
-const GeneralSetting = require("./generalSetting.model");
+import GeneralSetting from "./generalSetting.model";
 
 const createGeneralSetting = async (data) => GeneralSetting.create(data);
 
 const getGeneralSetting = async () => GeneralSetting.find({});
 
-module.exports = {
+export default {
   createGeneralSetting,
   getGeneralSetting,
 };

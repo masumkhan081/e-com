@@ -1,12 +1,16 @@
-const businessSetupService = require("./businessSetup.service");
+import businessSetupService from "./businessSetup.service";
 const {
   sendErrorResponse,
   sendFetchResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
+// 
 
-async function manageBusinessSetup(req, res) {
+export type TypeController = (req: Request, res: Response) => Promise<void>;
+
+
+export const manageBusinessSetup: TypeController = async (req, res) => {
   try {
     const data = await businessSetupService.manageBusinessSetup(req.body);
 
@@ -27,7 +31,7 @@ async function manageBusinessSetup(req, res) {
   }
 }
 
-async function getBusinessSetup(req, res) {
+export const getBusinessSetup: TypeController = async (req, res) => {
   try {
     const data = await businessSetupService.getBusinessSetup(req.query);
 
@@ -47,7 +51,7 @@ async function getBusinessSetup(req, res) {
 }
 //
 
-module.exports = {
+export default {
   manageBusinessSetup,
   getBusinessSetup,
 };

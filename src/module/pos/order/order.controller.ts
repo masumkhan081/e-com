@@ -1,5 +1,5 @@
-const orderService = require("./order.service");
-const httpStatus = require("http-status");
+import orderService from "./order.service";
+import httpStatus from "http-status";
 
 const {
   sendCreateResponse,
@@ -8,16 +8,16 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities, allowed_roles } = require("../../../config/constants");
-const Order = require("./order.model");
-const Customer = require("../../profile/customer-profile/customer.model");
-const { generateOTP, getOtpToken } = require("../../../utils/mail");
-const config = require("../../../config");
-const crypto = require("crypto-js");
+import { entities, allowed_roles } from "../../../config/constants";
+import Order from "./order.model";
+import Customer from "../../profile/customer-profile/customer.model";
+import { generateOTP, getOtpToken } from "../../../utils/mail";
+import config from "../../../config";
+import crypto from "crypto-js";
 
 //
 
-async function deliveryConfirmation(req, res) {
+export const deliveryConfirmation: TypeController = async (req, res) => {
   try {
     const targetOrderId = req.params.id;
     const targetOrder = await Order.findById(targetOrderId);
@@ -66,7 +66,7 @@ async function deliveryConfirmation(req, res) {
 }
 
 //
-async function requestDeliveryOtp(req, res) {
+export const requestDeliveryOtp: TypeController = async (req, res) => {
   try {
     const updatableId = req.params.id;
     const existingOrder = await Order.findById(updatableId).populate(
@@ -103,7 +103,7 @@ async function requestDeliveryOtp(req, res) {
   }
 }
 
-async function updateOrder(req, res) {
+export const updateOrder: TypeController = async (req, res) => {
   try {
     const updatableId = req.params.id;
     const existingOrder = await Order.findById(updatableId);
@@ -204,7 +204,7 @@ function getOrderMessage(status) {
   }
 }
 
-async function getOrders(req, res) {
+export const getOrders: TypeController = async (req, res) => {
   try {
     const data = await orderService.getOrders(req.query);
     if (data instanceof Error) {
@@ -218,7 +218,7 @@ async function getOrders(req, res) {
 }
 
 //
-async function deleteOrder(req, res) {
+export const deleteOrder: TypeController = async (req, res) => {
   const data = await orderService.deleteOrder(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.order });
@@ -227,7 +227,7 @@ async function deleteOrder(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   deleteOrder,
   getOrders,
   updateOrder,

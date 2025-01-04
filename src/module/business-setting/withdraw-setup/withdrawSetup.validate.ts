@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const withdraw_setting_schema = z.object({
   min_amount: z
@@ -16,4 +16,4 @@ const withdraw_setting_schema = z.object({
     .optional(),
 });
 
-module.exports = { withdraw_setting_schema };
+export default { withdraw_setting_schema };

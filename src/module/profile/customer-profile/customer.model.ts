@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const addressSchema = new mongoose.Schema({
   address: {
@@ -42,4 +42,4 @@ const customerSchema = new Schema(
 
 const Customer = model("customers", customerSchema);
 
-module.exports = Customer;
+export default Customer;

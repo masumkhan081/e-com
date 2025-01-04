@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const ads_schema = z.object({
   title: z.string().nonempty("Ad title is required."), 
@@ -13,4 +13,4 @@ const ads_schema = z.object({
     .default("Home page"),
 });
 
-module.exports = { ads_schema };
+export default { ads_schema };

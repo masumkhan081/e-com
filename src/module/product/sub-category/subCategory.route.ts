@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const subCategoryController = require("./subCategory.controller");
-const { uploadSubCatThumbnail } = require("../../../utils/uploader");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { subCategorySchema } = require("./subCategory.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import subCategoryController from "./subCategory.controller";
+import { uploadSubCatThumbnail } from "../../../utils/uploader";
+import validateRequest from "../../../middlewares/validateRequest";
+import { subCategorySchema } from "./subCategory.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 router.post(
   "/",
@@ -28,4 +28,4 @@ router.patch(
 // 
 router.delete("/:id", subCategoryController.deleteSubCategory);
 
-module.exports = router;
+export default router;

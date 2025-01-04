@@ -1,9 +1,9 @@
-const multer = require("multer");
+import multer from "multer";
 const upload = multer({ dest: "../../public/" });
-const { storageMap } = require("./fileHandle");
-const { entities } = require("../config/constants");
-const fs = require("fs");
-const path = require("path");
+import { storageMap } from "./fileHandle";
+import { entities } from "../config/constants";
+import fs from "fs";
+import path from "path";
 
 const fieldsMap = {
   [entities.brand]: [{ name: "brand_logo", maxCount: 1, required: true }],
@@ -100,7 +100,7 @@ async function uploadHandler({ entity, file }) {
   }
 }
 
-module.exports = {
+export default {
   uploadHandler,
   fieldsMap,
   uploadBrandLogo,

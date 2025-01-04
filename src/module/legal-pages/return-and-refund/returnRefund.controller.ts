@@ -1,4 +1,4 @@
-const returnRefundService = require("./returnRefund.service");
+import returnRefundService from "./returnRefund.service";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -7,11 +7,11 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 
 const entity = entities.return_and_refund_policy;
 
-async function getReturnRefunds(req, res) {
+export const getReturnRefunds: TypeController = async (req, res) => {
   try {
     const data = await returnRefundService.getReturnRefund();
 
@@ -31,7 +31,7 @@ async function getReturnRefunds(req, res) {
   }
 }
 //
-async function updateReturnRefund(req, res) {
+export const updateReturnRefund: TypeController = async (req, res) => {
   try {
     const result = await returnRefundService.updateReturnRefund(req.body);
 
@@ -60,7 +60,7 @@ async function updateReturnRefund(req, res) {
 }
 
 //
-module.exports = {
+export default {
   updateReturnRefund,
   getReturnRefunds,
 };

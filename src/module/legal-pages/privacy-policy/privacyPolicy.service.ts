@@ -1,5 +1,5 @@
  
-const PrivacyPolicy = require("./privacyPolicy.model");
+import PrivacyPolicy from "./privacyPolicy.model";
 //
 const updatePrivacyPolicy = async (data) =>
   await PrivacyPolicy.findOneAndUpdate(
@@ -11,7 +11,7 @@ const updatePrivacyPolicy = async (data) =>
 const getPrivacyPolicy = async () => PrivacyPolicy.find({});
 
 //
-module.exports = {
+export default {
   updatePrivacyPolicy,
   getPrivacyPolicy,
 };

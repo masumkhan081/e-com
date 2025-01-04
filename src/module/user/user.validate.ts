@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const registerSellerSchema = z.object({
   email: z
@@ -97,7 +97,7 @@ const resetPassSchema = z.object({
     .max(20, { message: "Password must be no more than 20 characters" }),
 });
 
-module.exports = {
+export default {
   registerCustomerSchema,
   registerSellerSchema,
   loginSchema,

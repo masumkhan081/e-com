@@ -1,8 +1,8 @@
  
-const { entities } = require("../../../config/constants");
-const Cart = require("./cart.model");
-const Order = require("../order/order.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Cart from "./cart.model";
+import Order from "../order/order.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 //
 async function createOrderFromCart(data) {}
 //
@@ -72,7 +72,7 @@ async function deleteCart(id) {
   }
 }
 
-module.exports = {
+export default {
   createOrderFromCart,
   createCart,
   updateCart,

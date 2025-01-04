@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const ThemeColor = require("./themeColor.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import ThemeColor from "./themeColor.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 async function createThemeColor(data) {
   try {
@@ -66,7 +66,7 @@ async function getThemeColors(query) {
   }
 }
 
-module.exports = {
+export default {
   createThemeColor,
   updateThemeColor,
   deleteThemeColor,

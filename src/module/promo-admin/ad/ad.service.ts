@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Ad = require("./ad.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Ad from "./ad.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 //
 
@@ -59,7 +59,7 @@ async function deleteAd(id) {
   }
 }
 
-module.exports = {
+export default {
   deleteAd,
   getAds,
   getSingleAd,

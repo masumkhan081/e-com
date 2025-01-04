@@ -1,14 +1,14 @@
-const mailConfigService = require("./mailConfig.service");
+import mailConfigService from "./mailConfig.service";
 
 const {
   sendErrorResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const mailConfig = require("./mailConfig.model");
+import { entities } from "../../../config/constants";
+import mailConfig from "./mailConfig.model";
 //
 
-async function getMailConfig(req, res) {
+export const getMailConfig: TypeController = async (req, res) => {
   try {
     const data = await mailConfigService.getMailConfig();
 
@@ -28,7 +28,7 @@ async function getMailConfig(req, res) {
   }
 }
 //
-async function updateMailConfig(req, res) {
+export const updateMailConfig: TypeController = async (req, res) => {
   try {
     const result = await mailConfigService.updateMailConfig(req.body);
 
@@ -58,7 +58,7 @@ async function updateMailConfig(req, res) {
 }
 
 //
-module.exports = {
+export default {
   updateMailConfig,
   getMailConfig,
 };

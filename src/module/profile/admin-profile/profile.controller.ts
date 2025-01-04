@@ -1,5 +1,5 @@
-const profileService = require("./profile.service");
-const httpStatus = require("http-status");
+import profileService from "./profile.service";
+import httpStatus from "http-status";
 //
 const {
   sendCreateResponse,
@@ -8,9 +8,9 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 //
-async function createProfile(req, res) {
+export const createProfile: TypeController = async (req, res) => {
   const data =  await profileService.createProfile(req.body);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.address });
@@ -19,7 +19,7 @@ async function createProfile(req, res) {
   }
 }
 //
-async function getProfiles(req, res) {
+export const getProfiles: TypeController = async (req, res) => {
   const data =  await profileService.getProfiles(req.query);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.address });
@@ -28,7 +28,7 @@ async function getProfiles(req, res) {
   }
 }
 //
-async function updateProfile(req, res) {
+export const updateProfile: TypeController = async (req, res) => {
   const data =  await profileService.updateProfile({
     id: req.params.id,
     data: req.body,
@@ -40,7 +40,7 @@ async function updateProfile(req, res) {
   }
 }
 //
-async function deleteProfile(req, res) {
+export const deleteProfile: TypeController = async (req, res) => {
   const data =  await profileService.deleteProfile(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.address });
@@ -49,7 +49,7 @@ async function deleteProfile(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createProfile,
   updateProfile,
   deleteProfile,

@@ -1,5 +1,5 @@
-const addressService = require("../services/address.service");
-const httpStatus = require("http-status");
+import addressService from "../services/address.service";
+import httpStatus from "http-status";
 
 const {
   sendCreateResponse,
@@ -8,9 +8,9 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../utils/responseHandler");
-const { entities } = require("../config/constants");
+import { entities } from "../config/constants";
 
-async function createDelivery(req, res) {
+export const createDelivery: TypeController = async (req, res) => {
   const data =  await addressService.createDelivery(req.body);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.address });
@@ -19,7 +19,7 @@ async function createDelivery(req, res) {
   }
 }
 
-async function getAddresses(req, res) {
+export const getAddresses: TypeController = async (req, res) => {
   const data =  await addressService.getAddresses(req.query);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.address });
@@ -28,7 +28,7 @@ async function getAddresses(req, res) {
   }
 }
 //
-async function updateAddress(req, res) {
+export const updateAddress: TypeController = async (req, res) => {
   const data =  await addressService.updateAddress({
     id: req.params.id,
     data: req.body,
@@ -40,7 +40,7 @@ async function updateAddress(req, res) {
   }
 }
 //
-async function deleteAddress(req, res) {
+export const deleteAddress: TypeController = async (req, res) => {
   const data =  await addressService.deleteAddress(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.address });
@@ -49,7 +49,7 @@ async function deleteAddress(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createDelivery,
   updateAddress,
   deleteAddress,

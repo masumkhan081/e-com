@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Product = require("./product.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Product from "./product.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 async function createProduct(data) {
   try {
@@ -108,7 +108,7 @@ async function deleteProduct(id) {
   }
 }
 
-module.exports = {
+export default {
   createProduct,
   updateProduct,
   deleteProduct,

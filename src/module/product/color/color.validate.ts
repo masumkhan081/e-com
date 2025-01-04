@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const colorSchema = z.object({
   name: z
@@ -16,4 +16,4 @@ const colorSchema = z.object({
   is_active: z.boolean().default(false),
 });
 
-module.exports = { colorSchema };
+export default { colorSchema };

@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const support_schema = new Schema(
   {
@@ -35,4 +35,4 @@ const support_schema = new Schema(
 
 const Support = model("supports", support_schema);
 
-module.exports = Support;
+export default Support;

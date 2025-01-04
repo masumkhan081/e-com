@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const SocialLink = require("./socialLink.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import SocialLink from "./socialLink.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 async function createSocialLink(data) {
   try {
@@ -69,7 +69,7 @@ async function getSocialLinks(query) {
   }
 }
 
-module.exports = {
+export default {
   createSocialLink,
   updateSocialLink,
   deleteSocialLink,

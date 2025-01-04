@@ -1,10 +1,10 @@
-const shopBannerService = require("./banner.service");
-const ShopBanner = require("./banner.model");
-const httpStatus = require("http-status");
+import shopBannerService from "./banner.service";
+import ShopBanner from "./banner.model";
+import httpStatus from "http-status";
 //
-const { promisify } = require("util");
-const fs = require("fs");
-const path = require("path");
+import { promisify } from "util";
+import fs from "fs";
+import path from "path";
 const unlinkAsync = promisify(fs.unlink);
 //
 const {
@@ -14,9 +14,9 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { fieldsMap, uploadHandler } = require("../../../utils/uploader");
-const { isPostBodyValid } = require("./banner.validate");
+import { entities } from "../../../config/constants";
+import { fieldsMap, uploadHandler } from "../../../utils/uploader";
+import { isPostBodyValid } from "./banner.validate";
 
 async function createBanner(req, res, next) {
   try {
@@ -59,7 +59,7 @@ async function createBanner(req, res, next) {
 }
 
 //
-async function updateBanner(req, res) {
+export const updateBanner: TypeController = async (req, res) => {
   try {
     const { title, is_active } = req.body;
     const idUpdatableId = req.params.id;
@@ -120,7 +120,7 @@ async function updateBanner(req, res) {
   }
 }
 
-async function getBanners(req, res) {
+export const getBanners: TypeController = async (req, res) => {
   const data =  await shopBannerService.getBanners(req.query);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -137,7 +137,7 @@ async function getBanners(req, res) {
   }
 }
 //
-async function deleteBanner(req, res) {
+export const deleteBanner: TypeController = async (req, res) => {
   const data =  await shopBannerService.deleteBanner(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -154,7 +154,7 @@ async function deleteBanner(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createBanner,
   updateBanner,
   deleteBanner,

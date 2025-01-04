@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const riderController = require("./rider.controller");
-const { uploadRiderProfile } = require("../../../utils/uploader");
-const { allowed_roles } = require("../../../config/constants");
-const accessControl = require("../../../middlewares/verifyToken");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { riderSchema } = require("./rider.validate");
+import riderController from "./rider.controller";
+import { uploadRiderProfile } from "../../../utils/uploader";
+import { allowed_roles } from "../../../config/constants";
+import accessControl from "../../../middlewares/verifyToken";
+import validateRequest from "../../../middlewares/validateRequest";
+import { riderSchema } from "./rider.validate";
 //
 router.post(
   "/",
@@ -24,4 +24,4 @@ router.patch(
 );
 router.delete("/:id", riderController.deleteRider);
 
-module.exports = router;
+export default router;

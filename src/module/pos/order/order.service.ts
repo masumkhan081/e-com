@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Order = require("./order.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Order from "./order.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 //
 async function getOrders(query) {
@@ -48,7 +48,7 @@ async function deleteOrder(id) {
   }
 }
 
-module.exports = {
+export default {
    
   deleteOrder,
   getOrders,

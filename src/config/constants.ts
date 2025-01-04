@@ -1,6 +1,6 @@
- 
 
-const allowed_roles = {
+
+export const allowed_roles = {
   admin: "ADMIN",
   seller: "SELLER",
   user: "USER",
@@ -8,7 +8,7 @@ const allowed_roles = {
   rider: "RIDER",
 };
 
-const entities = {
+export const entities = {
   // ---------------------------------------------    product related
   product: "Products",
   product_request: "Product requests",
@@ -68,12 +68,12 @@ const entities = {
   user: "User",
 };
 
-const pagination_fields = ["page", "limit", "sort_by", "sort_order"];
-const default_view_Limit = 20;
-const default_sort_order = "desc";
+export const pagination_fields = ["page", "limit", "sort_by", "sort_order"];
+export const default_view_Limit = 20;
+export const default_sort_order = "desc";
 
 // may be changed based on the outcome expected
-const map_filterables = {
+export const map_filterables = {
   [entities.shop]: ["is_active", "status", "request_type"],
   [entities.product]: ["category", "status", "adminApproval", "seller"],
   [entities.auction]: ["status", "isFlagged", "timeZone", "seller"],
@@ -85,7 +85,7 @@ const map_filterables = {
   [entities.coupon]: ["is_active", "is_admin"],
 };
 
-const map_searchables = {
+export const map_searchables = {
   [entities.product]: ["name", "brand", "category", "sub_category"],
   [entities.product_category]: ["name"],
   [entities.sub_category]: ["name"],
@@ -123,7 +123,7 @@ const map_searchables = {
   [entities.user]: ["username", "email"], // Adding user as well
 };
 
-module.exports = {
+export default {
   pagination_fields,
   default_view_Limit,
   map_searchables,

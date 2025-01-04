@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
 const shopSettingSchema = {
   commission: {
@@ -39,4 +39,4 @@ const shopSettingSchema = {
 
 const ShopSetting = model("shop_settings", shopSettingSchema);
 
-module.exports = ShopSetting;
+export default ShopSetting;

@@ -1,8 +1,8 @@
-const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
-const { entities } = require("../config/constants");
-const { promisify } = require("util");
+import multer from "multer";
+import fs from "fs";
+import path from "path";
+import { entities } from "../config/constants";
+import { promisify } from "util";
 const unlinkAsync = promisify(fs.unlink);
 //
 const storageMap = {
@@ -146,7 +146,7 @@ async function removeFile({ fileUrl }) {
   }
 }
 
-module.exports = {
+export default {
   storageMap,
   removeFile,
 };

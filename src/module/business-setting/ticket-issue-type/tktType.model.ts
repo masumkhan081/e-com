@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const tktTypeSchema = new Schema({
   name: {
@@ -15,4 +15,4 @@ const tktTypeSchema = new Schema({
 
 const TktType = model("ticket_types", tktTypeSchema);
 
-module.exports = TktType;
+export default TktType;

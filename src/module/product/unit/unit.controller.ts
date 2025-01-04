@@ -1,5 +1,5 @@
-const unitService = require("./unit.service");
-const Unit = require("./unit.model");
+import unitService from "./unit.service";
+import Unit from "./unit.model";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -9,11 +9,11 @@ const {
   response_map,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const Product = require("../product/product.model");
+import { entities } from "../../../config/constants";
+import Product from "../product/product.model";
 //
 
-async function getSingleUnit(req, res) {
+export const getSingleUnit: TypeController = async (req, res) => {
   try {
     const data =  await unitService.getSingleUnit(req.params.id);
     if (data instanceof Error) {
@@ -30,7 +30,7 @@ async function getSingleUnit(req, res) {
   }
 }
 //
-async function createUnit(req, res) {
+export const createUnit: TypeController = async (req, res) => {
   try {
     const data =  await unitService.createUnit(req.body);
     if (data instanceof Error) {
@@ -43,7 +43,7 @@ async function createUnit(req, res) {
   }
 }
 
-async function getUnits(req, res) {
+export const getUnits: TypeController = async (req, res) => {
   try {
     const data =  await unitService.getUnits(req.query);
     if (data instanceof Error) {
@@ -56,7 +56,7 @@ async function getUnits(req, res) {
   }
 }
 //
-async function updateUnit(req, res) {
+export const updateUnit: TypeController = async (req, res) => {
   try {
     const data =  await unitService.updateUnit({
       id: req.params.id,
@@ -72,7 +72,7 @@ async function updateUnit(req, res) {
   }
 }
 //
-async function deleteUnit(req, res) {
+export const deleteUnit: TypeController = async (req, res) => {
   try {
     const exist = await Unit.findById(req.params.id);
 
@@ -116,7 +116,7 @@ async function deleteUnit(req, res) {
   }
 }
 //
-async function updateUnitStatus(req, res) {
+export const updateUnitStatus: TypeController = async (req, res) => {
   try {
     const exist = await Unit.findById(req.params.id);
     if (exist) {
@@ -141,7 +141,7 @@ async function updateUnitStatus(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createUnit,
   updateUnit,
   deleteUnit,

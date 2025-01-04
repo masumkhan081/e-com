@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 //
 const socialLinkSchema = new Schema(
   {
@@ -28,4 +28,4 @@ const socialLinkSchema = new Schema(
 
 const SocialkLink = model("social_links", socialLinkSchema);
 
-module.exports = SocialkLink;
+export default SocialkLink;

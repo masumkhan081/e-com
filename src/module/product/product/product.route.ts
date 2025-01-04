@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const productController = require("./product.controller");
-const { uploadProductImages } = require("../../../utils/uploader");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const { productSchema } = require("./product.validate");
-const validateRequest = require("../../../middlewares/validateRequest");
+import productController from "./product.controller";
+import { uploadProductImages } from "../../../utils/uploader";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import { productSchema } from "./product.validate";
+import validateRequest from "../../../middlewares/validateRequest";
 //
 router.post(
   "/",
@@ -31,4 +31,4 @@ router.delete(
   productController.deleteProduct
 );
 //
-module.exports = router;
+export default router;

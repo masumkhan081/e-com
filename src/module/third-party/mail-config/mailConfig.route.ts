@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const mailConfigController = require("./mailConfig.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { mailConfigSchema } = require("./mailConfig.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import mailConfigController from "./mailConfig.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { mailConfigSchema } from "./mailConfig.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 router.get("/", mailConfigController.getMailConfig);
 //
@@ -15,4 +15,4 @@ router.patch(
   mailConfigController.updateMailConfig
 );
 //
-module.exports = router;
+export default router;

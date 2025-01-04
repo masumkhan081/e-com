@@ -1,6 +1,6 @@
  
 
-const ReturnRefund = require("./returnRefund.model");
+import ReturnRefund from "./returnRefund.model";
 
 //
 const updateReturnRefund = async (data) =>
@@ -12,7 +12,7 @@ const updateReturnRefund = async (data) =>
 //
 const getReturnRefund = async () => ReturnRefund.find({});
 
-module.exports = {
+export default {
   updateReturnRefund,
   getReturnRefund,
 };

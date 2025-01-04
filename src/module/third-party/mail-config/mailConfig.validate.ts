@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const mailConfigSchema = z.object({
   mail_mailer: z
@@ -32,4 +32,4 @@ const mailConfigSchema = z.object({
     .max(100, { message: "Mail from address must be at most 100 characters" }),
 });
 
-module.exports = { mailConfigSchema };
+export default { mailConfigSchema };

@@ -1,15 +1,15 @@
-const privacyPolicyService = require("./privacyPolicy.service");
-const PrivacyPolicy = require("./privacyPolicy.model");
+import privacyPolicyService from "./privacyPolicy.service";
+import PrivacyPolicy from "./privacyPolicy.model";
 
 const {
   sendErrorResponse,
   sendFetchResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 //
 
-async function getPrivacyPolicy(req, res) {
+export const getPrivacyPolicy: TypeController = async (req, res) => {
   try {
     const data = await privacyPolicyService.getPrivacyPolicy();
 
@@ -29,7 +29,7 @@ async function getPrivacyPolicy(req, res) {
 }
 //
 
-async function managePrivacyPolicy(req, res) {
+export const managePrivacyPolicy: TypeController = async (req, res) => {
   try {
     const result = await privacyPolicyService.updatePrivacyPolicy(req.body);
 
@@ -58,7 +58,7 @@ async function managePrivacyPolicy(req, res) {
 }
 
 //
-module.exports = {
+export default {
   managePrivacyPolicy,
   getPrivacyPolicy,
 };

@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const cartController = require("./cart.controller");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { cartSchema, checkoutSchema } = require("./cart.validate");
+import cartController from "./cart.controller";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import validateRequest from "../../../middlewares/validateRequest";
+import { cartSchema, checkoutSchema } from "./cart.validate";
 //
 router.patch(
   "/",
@@ -30,4 +30,4 @@ router.get("/", cartController.getCarts);
 
 router.delete("/:id", cartController.deleteCart);
 
-module.exports = router;
+export default router;

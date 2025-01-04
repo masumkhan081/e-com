@@ -1,4 +1,4 @@
-const shopService = require("./shop.service");
+import shopService from "./shop.service";
 const {
   sendDeletionResponse,
   sendErrorResponse,
@@ -6,13 +6,13 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../utils/responseHandler");
-const { entities, allowed_roles } = require("../../config/constants");
-const { removeFile } = require("../../utils/fileHandle");
-const { fieldsMap, uploadHandler } = require("../../utils/uploader");
+import { entities, allowed_roles } from "../../config/constants";
+import { removeFile } from "../../utils/fileHandle";
+import { fieldsMap, uploadHandler } from "../../utils/uploader";
 //
-const Shop = require("./shop.model");
+import Shop from "./shop.model";
 //
-async function updateShop(req, res) {
+export const updateShop: TypeController = async (req, res) => {
   try {
     const idUpdatableId = req.params.id;
     const paths = {};
@@ -100,7 +100,7 @@ async function updateShop(req, res) {
   }
 }
 //
-async function getShops(req, res) {
+export const getShops: TypeController = async (req, res) => {
   const data = await shopService.getShops(req.query);
   if (data instanceof Error) {
     console.log("error: getShops: " + data.message);
@@ -110,7 +110,7 @@ async function getShops(req, res) {
   }
 }
 //
-async function getSingleShop(req, res) {
+export const getSingleShop: TypeController = async (req, res) => {
   const data = await shopService.getSingleShop(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.shop });
@@ -123,7 +123,7 @@ async function getSingleShop(req, res) {
   }
 }
 //
-async function deleteShop(req, res) {
+export const deleteShop: TypeController = async (req, res) => {
   const data = await shopService.deleteShop(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.shop });
@@ -132,7 +132,7 @@ async function deleteShop(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   updateShop,
   deleteShop,
   getShops,

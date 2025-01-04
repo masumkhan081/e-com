@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const config = require("../config");
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import config from "../config";
 //
 
 const createToken = ({ payload, expireTime }) => {
@@ -36,4 +36,4 @@ async function getHashedPassword(password) {
   }
 }
 
-module.exports = { createToken, verifyToken, getHashedPassword };
+export default { createToken, verifyToken, getHashedPassword };

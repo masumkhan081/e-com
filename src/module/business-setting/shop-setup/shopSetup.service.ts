@@ -1,4 +1,4 @@
-const ShopSetting = require("./shopSetup.model");
+import ShopSetting from "./shopSetup.model";
 
 const manageShopSetting = async (data) =>
   await ShopSetting.findOneAndUpdate(
@@ -9,7 +9,7 @@ const manageShopSetting = async (data) =>
 //
 const getShopSettings = async () => ShopSetting.find({});
 
-module.exports = {
+export default {
   manageShopSetting,
   getShopSettings,
 };

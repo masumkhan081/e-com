@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 //
 const subCategorySchema = z.object({
@@ -17,4 +17,4 @@ const subCategorySchema = z.object({
   category: z.string(),
 });
 
-module.exports = { subCategorySchema };
+export default { subCategorySchema };

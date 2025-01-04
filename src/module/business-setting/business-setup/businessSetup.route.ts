@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const businessSetupController = require("./businessSetup.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { businessSetupSchema } = require("./businessSetup.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import businessSetupController from "./businessSetup.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { businessSetupSchema } from "./businessSetup.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 //
 router.get(
@@ -12,12 +12,13 @@ router.get(
   accessControl([allowed_roles.admin]),
   businessSetupController.getBusinessSetup
 );
-//
-router.patch(
-  "/",
-  accessControl([allowed_roles.admin]),
-  validateRequest(businessSetupSchema),
-  businessSetupController.manageBusinessSetup
-);
+const
+  //
+  router.patch(
+    "/",
+    accessControl([allowed_roles.admin]),
+    validateRequest(businessSetupSchema),
+    businessSetupController.manageBusinessSetup
+  );
 
-module.exports = router;
+export default router;

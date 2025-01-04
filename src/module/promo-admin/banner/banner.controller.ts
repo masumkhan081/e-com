@@ -1,9 +1,9 @@
-const bannerService = require("./banner.service");
-const Banner = require("./banner.model");
-const httpStatus = require("http-status");
+import bannerService from "./banner.service";
+import Banner from "./banner.model";
+import httpStatus from "http-status";
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 const {
   sendCreateResponse,
@@ -13,15 +13,15 @@ const {
   sendSingleFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities, file_config } = require("../../../config/constants");
+import { entities, file_config } from "../../../config/constants";
 const {
   storageMap,
   uploadBannerImage,
   removeFile,
 } = require("../../../utils/fileHandle");
-const { uploadHandler, fieldsMap } = require("../../../utils/uploader");
-const { isPatchBodyValid, isPostBodyValid } = require("./banner.validate");
-const config = require("../../../config");
+import { uploadHandler, fieldsMap } from "../../../utils/uploader";
+import { isPatchBodyValid, isPostBodyValid } from "./banner.validate";
+import config from "../../../config";
 //
 
 async function getSingleBanner(req, res, next) {
@@ -92,7 +92,7 @@ async function createBanner(req, res, next) {
   }
 }
 //
-async function updateBanner(req, res) {
+export const updateBanner: TypeController = async (req, res) => {
   try {
     const bannerId = req.params.id;
     const updatableBanner = await Banner.findById(bannerId);
@@ -145,7 +145,7 @@ async function updateBanner(req, res) {
   }
 }
 //
-async function getBanners(req, res) {
+export const getBanners: TypeController = async (req, res) => {
   const data =  await bannerService.getBanners(req.query);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.banner });
@@ -154,7 +154,7 @@ async function getBanners(req, res) {
   }
 }
 //
-async function deleteBanner(req, res) {
+export const deleteBanner: TypeController = async (req, res) => {
   const data =  await bannerService.deleteBanner(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.banner });
@@ -163,7 +163,7 @@ async function deleteBanner(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createBanner,
   updateBanner,
   deleteBanner,

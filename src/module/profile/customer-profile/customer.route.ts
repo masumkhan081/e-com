@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const customerController = require("./customer.controller");
-const { isPatchBodyValid, isPostBodyValid } = require("./customer.validate");
+import customerController from "./customer.controller";
+import { isPatchBodyValid, isPostBodyValid } from "./customer.validate";
 //
 router.post("/", customerController.createCustomer);
 router.get("/", customerController.getCustomers);
 router.patch("/:id", customerController.updateCustomer);
 router.delete("/:id", customerController.deleteCustomer);
 
-module.exports = router;
+export default router;

@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const TktType = require("./tktType.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import TktType from "./tktType.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 async function createTktType(data) {
   try {
@@ -69,7 +69,7 @@ async function getTktTypes(query) {
   }
 }
 
-module.exports = {
+export default {
   createTktType,
   updateTktType,
   deleteTktType,

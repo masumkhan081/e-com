@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const termConditionSchema = new Schema(
   {
@@ -30,4 +30,4 @@ const termConditionSchema = new Schema(
 
 const TermCondition = model("terms_condition", termConditionSchema);
 
-module.exports = TermCondition;
+export default TermCondition;

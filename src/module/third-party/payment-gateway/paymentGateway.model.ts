@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 // Enum values
@@ -85,4 +85,4 @@ PaymentConfig.discriminator("BKASH", BkashSchema);
 PaymentConfig.discriminator("PAYTABS", PayTabsSchema);
 
 // Export the base model
-module.exports = { PaymentConfig, gatewayEnum };
+export default { PaymentConfig, gatewayEnum };

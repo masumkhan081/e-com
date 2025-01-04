@@ -1,4 +1,4 @@
-const adService = require("./ad.service");
+import adService from "./ad.service";
 //
 const {
   sendCreateResponse,
@@ -9,15 +9,15 @@ const {
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
 //
-const httpStatus = require("http-status");
-const { promisify } = require("util");
-const fs = require("fs");
-const path = require("path");
+import httpStatus from "http-status";
+import { promisify } from "util";
+import fs from "fs";
+import path from "path";
 const unlinkAsync = promisify(fs.unlink);
-const { entities } = require("../../../config/constants");
-const Ad = require("./ad.model");
-const { fieldsMap, uploadHandler } = require("../../../utils/uploader");
-const { removeFile } = require("../../../utils/fileHandle");
+import { entities } from "../../../config/constants";
+import Ad from "./ad.model";
+import { fieldsMap, uploadHandler } from "../../../utils/uploader";
+import { removeFile } from "../../../utils/fileHandle";
 
 //
 async function getSingleAd(req, res, next) {
@@ -68,7 +68,7 @@ async function createAd(req, res, next) {
   }
 }
 //
-async function updateAd(req, res) {
+export const updateAd: TypeController = async (req, res) => {
   try {
     const { title, display_page, is_active } = req.body;
     const idUpdatableAd = req.params.id;
@@ -122,7 +122,7 @@ async function updateAd(req, res) {
   }
 }
 
-async function getAds(req, res) {
+export const getAds: TypeController = async (req, res) => {
   const data = await adService.getAds(req.query);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.ad });
@@ -132,7 +132,7 @@ async function getAds(req, res) {
 }
 
 //
-async function deleteAd(req, res) {
+export const deleteAd: TypeController = async (req, res) => {
   const data = await adService.deleteAd(req.params.id);
   if (data instanceof Error) {
     console.log("delete ad ----");
@@ -142,7 +142,7 @@ async function deleteAd(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createAd,
   updateAd,
   deleteAd,

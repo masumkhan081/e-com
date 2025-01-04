@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const variant = z.object({
   size: z.string().nonempty({ message: "Size is required" }),
@@ -51,7 +51,7 @@ const product_schema = z.object({
   review_note: z.string().optional(),
 });
 
-module.exports = {
+export default {
   product_schema,
   variant_schema,
 };

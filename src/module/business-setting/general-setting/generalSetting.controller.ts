@@ -1,4 +1,4 @@
-const generalSettingService = require("./generalSetting.service");
+import generalSettingService from "./generalSetting.service";
 
 const {
   sendCreateResponse,
@@ -6,11 +6,11 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { fieldsMap, uploadHandler } = require("../../../utils/uploader");
-const GeneralSetting = require("./generalSetting.model");
+import { entities } from "../../../config/constants";
+import { fieldsMap, uploadHandler } from "../../../utils/uploader";
+import GeneralSetting from "./generalSetting.model";
 
-async function manageGeneralSetting(req, res) {
+export const manageGeneralSetting: TypeController = async (req, res) => {
   const paths = {};
   try {
     const isExist = await GeneralSetting.findOne({}); // Check if a general setting already exists
@@ -93,7 +93,7 @@ async function manageGeneralSetting(req, res) {
   }
 }
 
-async function getGeneralSettings(req, res) {
+export const getGeneralSettings: TypeController = async (req, res) => {
   try {
     const data = await generalSettingService.getGeneralSetting(req.query);
 
@@ -112,7 +112,7 @@ async function getGeneralSettings(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   manageGeneralSetting,
   getGeneralSettings,
 };

@@ -1,5 +1,5 @@
-const shopSetupService = require("./shopSetup.service");
-const httpStatus = require("http-status");
+import shopSetupService from "./shopSetup.service";
+import httpStatus from "http-status";
 
 const {
   sendCreateResponse,
@@ -9,9 +9,9 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 
-async function getShopSettings(req, res) {
+export const getShopSettings: TypeController = async (req, res) => {
   try {
     const data = await shopSetupService.getShopSettings();
 
@@ -30,7 +30,7 @@ async function getShopSettings(req, res) {
   }
 }
 //
-async function manageShopSetting(req, res) {
+export const manageShopSetting: TypeController = async (req, res) => {
   try {
     const data = await shopSetupService.manageShopSetting(req.body);
 
@@ -51,7 +51,7 @@ async function manageShopSetting(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   manageShopSetting,
   getShopSettings,
 };

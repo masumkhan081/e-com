@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const {SMSConfig} = require("./smsGateway.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import {SMSConfig} from "./smsGateway.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 //
 async function createSMSConfig(data) {
   try {
@@ -59,7 +59,7 @@ async function updateSMSConfig({ id, data }) {
 //
 const deleteSMSConfig = async (id) => await SMSConfig.findByIdAndDelete(id);
 
-module.exports = {
+export default {
   createSMSConfig,
   updateSMSConfig,
   deleteSMSConfig,

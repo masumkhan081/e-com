@@ -1,4 +1,4 @@
-const termConditionService = require("./termCondition.service");
+import termConditionService from "./termCondition.service";
 const {
   isPostBodyValid,
   isPatchBodyValid,
@@ -11,9 +11,9 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 //
-async function getTermCondition(req, res) {
+export const getTermCondition: TypeController = async (req, res) => {
   try {
     const data = await termConditionService.getTermCondition();
 
@@ -33,7 +33,7 @@ async function getTermCondition(req, res) {
   }
 }
 //
-async function updateTermCondition(req, res) {
+export const updateTermCondition: TypeController = async (req, res) => {
   try {
     const result = await termConditionService.updateTermCondition(req.body);
 
@@ -62,7 +62,7 @@ async function updateTermCondition(req, res) {
 }
 
 //
-module.exports = {
+export default {
   updateTermCondition,
   getTermCondition,
 };

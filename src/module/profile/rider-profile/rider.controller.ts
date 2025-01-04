@@ -1,6 +1,6 @@
-const riderService = require("./rider.service");
-const { promisify } = require("util");
-const fs = require("fs");
+import riderService from "./rider.service";
+import { promisify } from "util";
+import fs from "fs";
 const unlinkAsync = promisify(fs.unlink);
 const {
   sendCreateResponse,
@@ -10,14 +10,14 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities, allowed_roles } = require("../../../config/constants");
-const { fieldsMap, uploadHandler } = require("../../../utils/uploader");
-const Rider = require("./rider.model");
-const { removeFile } = require("../../../utils/fileHandle");
-const User = require("../../user/user.model");
-const { getHashedPassword } = require("../../../utils/tokenisation");
+import { entities, allowed_roles } from "../../../config/constants";
+import { fieldsMap, uploadHandler } from "../../../utils/uploader";
+import Rider from "./rider.model";
+import { removeFile } from "../../../utils/fileHandle";
+import User from "../../user/user.model";
+import { getHashedPassword } from "../../../utils/tokenisation";
 //
-async function getSingleRider(req, res) {
+export const getSingleRider: TypeController = async (req, res) => {
   try {
     const data = await riderService.getSingleRider(req.params.id);
     if (data instanceof Error) {
@@ -34,7 +34,7 @@ async function getSingleRider(req, res) {
   }
 }
 
-async function createRider(req, res) {
+export const createRider: TypeController = async (req, res) => {
   const fieldName = fieldsMap[entities.rider][0].name;
   let fileUrl;
   let rider_profile;
@@ -124,7 +124,7 @@ async function createRider(req, res) {
   }
 }
 
-async function updateRider(req, res) {
+export const updateRider: TypeController = async (req, res) => {
   try {
     const {
       full_name,
@@ -191,7 +191,7 @@ async function updateRider(req, res) {
   }
 }
 //
-async function getRiders(req, res) {
+export const getRiders: TypeController = async (req, res) => {
   const data = await riderService.getRiders(req.query);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.rider });
@@ -200,7 +200,7 @@ async function getRiders(req, res) {
   }
 }
 //
-async function deleteRider(req, res) {
+export const deleteRider: TypeController = async (req, res) => {
   const data = await riderService.deleteRider(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.rider });
@@ -209,7 +209,7 @@ async function deleteRider(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createRider,
   updateRider,
   deleteRider,

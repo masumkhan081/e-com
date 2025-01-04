@@ -84,4 +84,4 @@ function getSearchAndPagination({ query: query, entity }) {
   };
 }
 
-module.exports = { getSearchAndPagination };
+export default { getSearchAndPagination };

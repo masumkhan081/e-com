@@ -1,5 +1,5 @@
  
-const ShippingDeliveryPolicy = require("./shippingDelivery.model"); 
+import ShippingDeliveryPolicy from "./shippingDelivery.model"; 
 //
 const updateShippingDeliveryPolicy = async (data) =>
   await ShippingDeliveryPolicy.findOneAndUpdate(
@@ -10,7 +10,7 @@ const updateShippingDeliveryPolicy = async (data) =>
 //
 const getShippingDeliveryPolicy = async () => ShippingDeliveryPolicy.find({});
 
-module.exports = {
+export default {
   updateShippingDeliveryPolicy,
   getShippingDeliveryPolicy,
 };

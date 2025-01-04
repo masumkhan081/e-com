@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const themeColorController = require("./themeColor.controller");
-const { themeColorSchema } = require("./themeColor.validate");
-const validateRequest = require("../../../middlewares/validateRequest");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import themeColorController from "./themeColor.controller";
+import { themeColorSchema } from "./themeColor.validate";
+import validateRequest from "../../../middlewares/validateRequest";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 router.post(
   "/",
@@ -29,4 +29,4 @@ router.delete(
   themeColorController.deleteThemeColor
 );
 
-module.exports = router;
+export default router;

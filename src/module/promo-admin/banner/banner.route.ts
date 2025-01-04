@@ -1,9 +1,9 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const bannerController = require("./banner.controller");
+import bannerController from "./banner.controller";
 //
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles, entities } = require("../../../config/constants");
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles, entities } from "../../../config/constants";
 const {
   fieldsMap,
   uploadHandler,
@@ -34,4 +34,4 @@ router.delete(
   bannerController.deleteBanner
 );
 
-module.exports = router;
+export default router;

@@ -1,8 +1,8 @@
  
-const { entities } = require("../../config/constants");
-const Shop = require("./shop.model");
-const { getSearchAndPagination } = require("../../utils/pagination");
-const { mongoose } = require("mongoose");
+import { entities } from "../../config/constants";
+import Shop from "./shop.model";
+import { getSearchAndPagination } from "../../utils/pagination";
+import { mongoose } from "mongoose";
 //
 async function getShops(query) {
   try {
@@ -119,7 +119,7 @@ async function deleteShop(id) {
   }
 }
 
-module.exports = {
+export default {
   deleteShop,
   getShops,
   getSingleShop,

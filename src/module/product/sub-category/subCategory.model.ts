@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const subCategorySchema = new Schema(
   {
@@ -34,4 +34,4 @@ const subCategorySchema = new Schema(
 
 const SubCategory = model("sub_categories", subCategorySchema);
 
-module.exports = SubCategory;
+export default SubCategory;

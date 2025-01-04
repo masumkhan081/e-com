@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const DeliveryCharge = require("./delCharge.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import DeliveryCharge from "./delCharge.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 async function createDeliveryCharge(data) {
   try {
@@ -69,7 +69,7 @@ async function deleteDeliveryCharge(id) {
   }
 }
 
-module.exports = {
+export default {
   createDeliveryCharge,
   updateDeliveryCharge,
   deleteDeliveryCharge,

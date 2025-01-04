@@ -1,5 +1,5 @@
-const couponService = require("./coupon.service");
-const httpStatus = require("http-status");
+import couponService from "./coupon.service";
+import httpStatus from "http-status";
 
 const {
   sendCreateResponse,
@@ -8,11 +8,11 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities, allowed_roles } = require("../../../config/constants");
-const Shop = require("../../shop/shop.model");
-const Coupon = require("./coupon.model");
+import { entities, allowed_roles } from "../../../config/constants";
+import Shop from "../../shop/shop.model";
+import Coupon from "./coupon.model";
 //
-async function createCoupon(req, res) {
+export const createCoupon: TypeController = async (req, res) => {
   try {
     let is_admin = false;
     const { is_global, applicable_shops, start_time, expire_time } = req.body;
@@ -87,7 +87,7 @@ async function createCoupon(req, res) {
   }
 }
 //
-async function getCoupons(req, res) {
+export const getCoupons: TypeController = async (req, res) => {
   try {
     const query = {
       is_admin: true,
@@ -117,7 +117,7 @@ async function getCoupons(req, res) {
   }
 }
 //
-async function updateCoupon(req, res) {
+export const updateCoupon: TypeController = async (req, res) => {
   try {
     const targetCoupon = await Coupon.findById(req.params.id);
     let is_admin = targetCoupon?.is_admin;
@@ -167,7 +167,7 @@ async function updateCoupon(req, res) {
   }
 }
 //
-async function deleteCoupon(req, res) {
+export const deleteCoupon: TypeController = async (req, res) => {
   const data = await couponService.deleteCoupon(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.coupon });
@@ -176,7 +176,7 @@ async function deleteCoupon(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createCoupon,
   updateCoupon,
   deleteCoupon,

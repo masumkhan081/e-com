@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const delChargeSchema = new Schema({
   zone: {
@@ -15,4 +15,4 @@ const delChargeSchema = new Schema({
 
 const DeliveryCharge = model("delivery_charges", delChargeSchema);
 
-module.exports = DeliveryCharge;
+export default DeliveryCharge;

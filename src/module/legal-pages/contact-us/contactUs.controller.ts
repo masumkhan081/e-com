@@ -1,4 +1,4 @@
-const contactUsService = require("./contactUs.service");
+import contactUsService from "./contactUs.service";
 
 const {
   sendSingleFetchResponse,
@@ -6,9 +6,9 @@ const {
   sendErrorResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 
-async function getContactUs(req, res) {
+export const getContactUs: TypeController = async (req, res) => {
   try {
     const data = await contactUsService.getContactUs();
     sendSingleFetchResponse({
@@ -27,7 +27,7 @@ async function getContactUs(req, res) {
 }
 //
 
-async function updateContactUs(req, res) {
+export const updateContactUs: TypeController = async (req, res) => {
   try {
     const data = await contactUsService.updateContactUs(req.body);
 
@@ -47,7 +47,7 @@ async function updateContactUs(req, res) {
 }
 
 //
-module.exports = {
+export default {
   updateContactUs,
   getContactUs,
 };

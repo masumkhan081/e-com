@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const smsGatewayController = require("./smsGateway.controller");
-const {} = require("./smsGateway.validate");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { smsConfigBaseSchema } = require("./smsGateway.validate");
-const accessControll = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import smsGatewayController from "./smsGateway.controller";
+import {} from "./smsGateway.validate";
+import validateRequest from "../../../middlewares/validateRequest";
+import { smsConfigBaseSchema } from "./smsGateway.validate";
+import accessControll from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 router.get(
   "/",
@@ -22,4 +22,4 @@ router.patch(
 //
 router.delete("/:id", smsGatewayController.deleteSmsGateway);
 
-module.exports = router;
+export default router;

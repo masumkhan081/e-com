@@ -1,9 +1,9 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const orderController = require("./order.controller");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const validateRequest = require("../../../middlewares/validateRequest");
+import orderController from "./order.controller";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import validateRequest from "../../../middlewares/validateRequest";
 //
 router.get("/", orderController.getOrders);
 //
@@ -19,4 +19,4 @@ router.patch(
 //
 router.delete("/:id", orderController.deleteOrder);
 
-module.exports = router;
+export default router;

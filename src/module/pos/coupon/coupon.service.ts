@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Coupon = require("./coupon.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Coupon from "./coupon.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 //
 async function createCoupon(data) {
   try {
@@ -70,7 +70,7 @@ async function deleteCoupon(id) {
   }
 }
 
-module.exports = {
+export default {
   createCoupon,
   updateCoupon,
   deleteCoupon,

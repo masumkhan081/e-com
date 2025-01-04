@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const profileController = require("./profile.controller");
-const { isPatchBodyValid, isPostBodyValid } = require("./profile.validate");
+import profileController from "./profile.controller";
+import { isPatchBodyValid, isPostBodyValid } from "./profile.validate";
 //
 router.post("/", profileController.createProfile);
 router.get("/", profileController.getProfiles);
 router.patch("/:id", profileController.updateProfile);
 router.delete("/:id", profileController.deleteProfile);
 //
-module.exports = router;
+export default router;

@@ -1,9 +1,9 @@
  
-const { entities } = require("../../../config/constants");
-const SubCategory = require("./subCategory.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
-const { ObjectId } = require("mongodb");
-const mongoose = require("mongoose");
+import { entities } from "../../../config/constants";
+import SubCategory from "./subCategory.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
+import { ObjectId } from "mongodb";
+import mongoose from "mongoose";
 
 //
 async function getSingleSubCategory(updatableId) {
@@ -72,7 +72,7 @@ async function deleteSubCategory(id) {
   }
 }
 
-module.exports = {
+export default {
   deleteSubCategory,
   getSubCategories,
   getSingleSubCategory,

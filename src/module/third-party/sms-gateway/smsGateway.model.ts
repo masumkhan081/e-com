@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 // Enum values
@@ -35,4 +35,4 @@ SMSConfig.discriminator("TWILIO", twilioSchema);
 SMSConfig.discriminator("TELESIGN", telesignSchema);
 //
 // Export the base model
-module.exports = { SMSConfig, gatewayEnum };
+export default { SMSConfig, gatewayEnum };

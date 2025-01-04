@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const bannerController = require("./banner.controller");
-const { isPatchBodyValid, isPostBodyValid } = require("./banner.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const { uploadShopBanner } = require("../../../utils/uploader");
+import bannerController from "./banner.controller";
+import { isPatchBodyValid, isPostBodyValid } from "./banner.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import { uploadShopBanner } from "../../../utils/uploader";
 //
 router.post(
   "/",
@@ -20,4 +20,4 @@ router.delete(
   bannerController.deleteBanner
 );
 
-module.exports = router;
+export default router;

@@ -1,11 +1,11 @@
  
-const cookieParser = require("cookie-parser");
-// const bodyParser = require("body-parser");
-const cors = require("cors");
-const express = require("express");
-// const formidable = require('express-formidable');
-const httpStatus = require("http-status");
-const RootRoutes = require("./root.route");
+import cookieParser from "cookie-parser";
+// import bodyParser from "body-parser";
+import cors from "cors";
+import express from "express";
+// import formidable from 'express-formidable';
+import httpStatus from "http-status";
+import RootRoutes from "./root.route";
 
 const app = express();
 
@@ -59,4 +59,4 @@ app.use((req, res, next) => {
   next();
 });
 
-module.exports = app;
+export default app;

@@ -1,4 +1,4 @@
-const paymentGatewayService = require("./paymentGateway.service");
+import paymentGatewayService from "./paymentGateway.service";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -6,8 +6,8 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { gatewayEnum, PaymentConfig } = require("./paymentGateway.model");
+import { entities } from "../../../config/constants";
+import { gatewayEnum, PaymentConfig } from "./paymentGateway.model";
 const {
   amarPaySchema,
   bkashSchema,
@@ -18,12 +18,12 @@ const {
   stripeSchema,
   paymentConfigBaseSchema,
 } = require("./paymentGateway.validate");
-const validateData = require("../../../middlewares/validateData");
-const { fieldsMap, uploadHandler } = require("../../../utils/uploader");
-const { removeFile } = require("../../../utils/fileHandle");
+import validateData from "../../../middlewares/validateData";
+import { fieldsMap, uploadHandler } from "../../../utils/uploader";
+import { removeFile } from "../../../utils/fileHandle";
 //
 
-async function createPaymentGateway(req, res) {
+export const createPaymentGateway: TypeController = async (req, res) => {
   try {
     const { gateway, ...configData } = req.body;
 
@@ -127,7 +127,7 @@ async function createPaymentGateway(req, res) {
   }
 }
 
-async function getPaymentGateway(req, res) {
+export const getPaymentGateway: TypeController = async (req, res) => {
   const data = await paymentGatewayService.getPaymentGateway(req.query);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -145,7 +145,7 @@ async function getPaymentGateway(req, res) {
 }
 //
  
-async function deletePaymentGateway(req, res) {
+export const deletePaymentGateway: TypeController = async (req, res) => {
   const data = await paymentGatewayService.deletePaymentGateway(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -162,7 +162,7 @@ async function deletePaymentGateway(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createPaymentGateway,
    
   deletePaymentGateway,

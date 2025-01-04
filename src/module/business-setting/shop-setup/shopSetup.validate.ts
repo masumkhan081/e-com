@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const shopSettingSchema = z.object({
   commission: z
@@ -13,4 +13,4 @@ const shopSettingSchema = z.object({
   is_product_update_approval_required: z.boolean().default(false),
 });
 
-module.exports = { shopSettingSchema };
+export default { shopSettingSchema };

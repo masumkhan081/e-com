@@ -1,8 +1,9 @@
  
-const app = require("./src/app");
-const mongodbConnection = require("./src/config/mongodb");
-const config = require("./src/config");
-require("dotenv").config();
+import app from "./src/app";
+import mongodbConnection from "./src/config/mongodb";
+import config from "./src/config";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function bootstrap() {
   const server = app.listen(config.port, async () => {

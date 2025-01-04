@@ -1,4 +1,4 @@
-const BusinessSetup = require("./businessSetup.model");
+import BusinessSetup from "./businessSetup.model";
 
 const manageBusinessSetup = async (data) =>
   await BusinessSetup.findOneAndUpdate(
@@ -10,7 +10,7 @@ const manageBusinessSetup = async (data) =>
 const getBusinessSetup = async () => BusinessSetup.find({});
 //
 
-module.exports = {
+export default {
   manageBusinessSetup,
   getBusinessSetup,
 };

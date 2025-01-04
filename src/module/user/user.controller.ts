@@ -1,19 +1,19 @@
-const userService = require("./user.service");
-const httpStatus = require("http-status");
-const config = require("../../config/index");
-const {} = require("../../utils/responseHandler");
-const { getHashedPassword, verifyToken } = require("../../utils/tokenisation");
-const User = require("./user.model");
-const { sendOTPMail, sendResetMail } = require("../../utils/mail");
-const Shop = require("../shop/shop.model");
-const SellerProfile = require("../profile/seller-profile/profile.model");
-const { allowed_roles, entities } = require("../../config/constants");
-const { fieldsMap, uploadHandler } = require("../../utils/uploader");
-const crypto = require("crypto-js");
+import userService from "./user.service";
+import httpStatus from "http-status";
+import config from "../../config/index";
+import {} from "../../utils/responseHandler";
+import { getHashedPassword, verifyToken } from "../../utils/tokenisation";
+import User from "./user.model";
+import { sendOTPMail, sendResetMail } from "../../utils/mail";
+import Shop from "../shop/shop.model";
+import SellerProfile from "../profile/seller-profile/profile.model";
+import { allowed_roles, entities } from "../../config/constants";
+import { fieldsMap, uploadHandler } from "../../utils/uploader";
+import crypto from "crypto-js";
 
 //
 
-async function resendOtp(req, res) {
+export const resendOtp: TypeController = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
@@ -46,7 +46,7 @@ async function resendOtp(req, res) {
   }
 }
 
-async function registerSeller(req, res) {
+export const registerSeller: TypeController = async (req, res) => {
   try {
     const { email, password, confirm_password } = req.body;
 
@@ -163,7 +163,7 @@ const registerCustomer = async (req, res) => {
   }
 };
 
-async function verifyEmail(req, res) {
+export const verifyEmail: TypeController = async (req, res) => {
   try {
     const { otp: otp_from_user, token, email: email_from_user } = req.body;
     // Decrypt OTP token and parse the data
@@ -202,7 +202,7 @@ async function verifyEmail(req, res) {
   }
 }
 
-async function login(req, res) {
+export const login: TypeController = async (req, res) => {
   try {
     const { email, password } = req.body;
     await userService.login({ res, email, password });
@@ -214,12 +214,12 @@ async function login(req, res) {
   }
 }
 
-// async function logout(req, res) {
+// export const logout: TypeController = async (req, res) => {
 //   res.clearCookie(config.tokenHeaderKey);
 //   res.json({ status: 200, message: "User logged out succesfully" });
 // }
 
-async function requestAccountRecovery(req, res) {
+export const requestAccountRecovery: TypeController = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
@@ -254,7 +254,7 @@ async function requestAccountRecovery(req, res) {
   }
 }
 
-async function verifyAccountRecovery(req, res) {
+export const verifyAccountRecovery: TypeController = async (req, res) => {
   try {
     await userService.verifyAccountRecovery({ token: req.params.token, res });
   } catch (error) {
@@ -262,7 +262,7 @@ async function verifyAccountRecovery(req, res) {
   }
 }
 
-async function updatePassword(req, res) {
+export const updatePassword: TypeController = async (req, res) => {
   try {
     const { token, email, password, confirm_password } = req.body;
 
@@ -325,7 +325,7 @@ async function updatePassword(req, res) {
 }
 
 //
-module.exports = {
+export default {
   registerSeller,
   registerCustomer,
   verifyEmail,

@@ -1,7 +1,7 @@
  
-const { entities } = require("../config/constants");
-const Support = require("../models/support.model");
-const { getSearchAndPagination } = require("../utils/pagination");
+import { entities } from "../config/constants";
+import Support from "../models/support.model";
+import { getSearchAndPagination } from "../utils/pagination";
 
 async function createSupport(data) {
   try {
@@ -66,7 +66,7 @@ async function deleteSupport(id) {
   }
 }
 
-module.exports = {
+export default {
   createSupport,
   updateSupport,
   deleteSupport,

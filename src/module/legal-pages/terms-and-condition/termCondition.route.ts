@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const termConditionController = require("./termCondition.controller");
+import termConditionController from "./termCondition.controller";
 //
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { termsAndConditionsSchema } = require("./termCondition.validate");
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import validateRequest from "../../../middlewares/validateRequest";
+import { termsAndConditionsSchema } from "./termCondition.validate";
 
 router.get("/", termConditionController.getTermCondition);
 router.patch(
@@ -15,4 +15,4 @@ router.patch(
   termConditionController.updateTermCondition
 );
 
-module.exports = router;
+export default router;

@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const QuickLink = require("./quickLink.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import QuickLink from "./quickLink.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 async function createQuickLink(data) {
   try {
@@ -69,7 +69,7 @@ async function getQuickLinks(query) {
   }
 }
 
-module.exports = {
+export default {
   createQuickLink,
   updateQuickLink,
   deleteQuickLink,

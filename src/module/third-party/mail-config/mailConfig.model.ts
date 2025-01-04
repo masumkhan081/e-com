@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const mailConfigSchema = new Schema(
   {
@@ -51,4 +51,4 @@ const mailConfigSchema = new Schema(
 //
 const MailConfig = model("mail_configs", mailConfigSchema);
 //
-module.exports = MailConfig;
+export default MailConfig;

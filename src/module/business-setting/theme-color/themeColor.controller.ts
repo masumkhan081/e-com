@@ -1,5 +1,5 @@
-const themeColorService = require("./themeColor.service");
-const httpStatus = require("http-status");
+import themeColorService from "./themeColor.service";
+import httpStatus from "http-status";
 
 const {
   sendCreateResponse,
@@ -8,9 +8,9 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 
-async function createThemeColor(req, res) {
+export const createThemeColor: TypeController = async (req, res) => {
   const data = await themeColorService.createThemeColor(req.body);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -27,7 +27,7 @@ async function createThemeColor(req, res) {
   }
 }
 
-async function getThemeColors(req, res) {
+export const getThemeColors: TypeController = async (req, res) => {
   const data = await themeColorService.getThemeColors(req.query);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -44,7 +44,7 @@ async function getThemeColors(req, res) {
   }
 }
 //
-async function updateThemeColor(req, res) {
+export const updateThemeColor: TypeController = async (req, res) => {
   const data = await themeColorService.updateThemeColor({
     id: req.params.id,
     data: req.body,
@@ -64,7 +64,7 @@ async function updateThemeColor(req, res) {
   }
 }
 //
-async function deleteThemeColor(req, res) {
+export const deleteThemeColor: TypeController = async (req, res) => {
   try {
     const data = await themeColorService.deleteThemeColor(req.params.id);
     if (data instanceof Error) {
@@ -85,7 +85,7 @@ async function deleteThemeColor(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createThemeColor,
   updateThemeColor,
   deleteThemeColor,

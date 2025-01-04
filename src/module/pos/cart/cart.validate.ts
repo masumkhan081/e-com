@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 // Define a Zod schema for the product
 const productSchemaInCart = z.object({
   product: z.string().nonempty("Product reference is required"),
@@ -29,4 +29,4 @@ const checkoutSchema = z.object({
   voucher_code: z.string().optional(),
 });
 
-module.exports = { cartSchema, checkoutSchema };
+export default { cartSchema, checkoutSchema };

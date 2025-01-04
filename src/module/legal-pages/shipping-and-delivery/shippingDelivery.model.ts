@@ -1,5 +1,5 @@
  
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
 const shippingDeliverySchema = new Schema(
   {
@@ -32,4 +32,4 @@ const ShippingDelivery = model(
   shippingDeliverySchema
 );
 
-module.exports = ShippingDelivery;
+export default ShippingDelivery;

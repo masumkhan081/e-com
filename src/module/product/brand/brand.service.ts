@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Brand = require("./brand.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Brand from "./brand.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 //
 async function createBrand({ name, logo }) {
   try {
@@ -79,7 +79,7 @@ async function deleteBrand(id) {
   }
 }
 //
-module.exports = {
+export default {
   createBrand,
   updateBrand,
   deleteBrand,

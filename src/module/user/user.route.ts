@@ -1,7 +1,7 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const userController = require("./user.controller.js");
-const validateRequest = require("../../middlewares/validateRequest.js");
+import userController from "./user.controller.js";
+import validateRequest from "../../middlewares/validateRequest.js";
 const {
   loginSchema,
   registerCustomerSchema,
@@ -10,19 +10,19 @@ const {
   otpVerSchema,
   resetPassSchema,
 } = require("./user.validate.js");
-const config = require("../../config/index.js");
-const { getHashedPassword } = require("../../utils/tokenisation.js");
-const User = require("./user.model.js");
-const jwt = require("jsonwebtoken");
-const { allowed_roles, entities } = require("../../config/constants.js");
+import config from "../../config/index.js";
+import { getHashedPassword } from "../../utils/tokenisation.js";
+import User from "./user.model.js";
+import jwt from "jsonwebtoken";
+import { allowed_roles, entities } from "../../config/constants.js";
 //
-const Admin = require("../profile/admin-profile/profile.model.js");
-const Customer = require("../profile/customer-profile/customer.model.js");
-const Rider = require("../profile/rider-profile/rider.model.js");
-const Seller = require("../profile/seller-profile/profile.model.js");
-const { sendErrorResponse } = require("../../utils/responseHandler.js");
-const { uploadShopCreationFiles } = require("../../utils/uploader.js");
-const { sendOTPMail } = require("../../utils/mail.js");
+import Admin from "../profile/admin-profile/profile.model.js";
+import Customer from "../profile/customer-profile/customer.model.js";
+import Rider from "../profile/rider-profile/rider.model.js";
+import Seller from "../profile/seller-profile/profile.model.js";
+import { sendErrorResponse } from "../../utils/responseHandler.js";
+import { uploadShopCreationFiles } from "../../utils/uploader.js";
+import { sendOTPMail } from "../../utils/mail.js";
 //
 // router.get("/send-mail", async (req, res) => {
 //   const response = await sendOTPMail("masumkhan081@gmail.com");
@@ -184,4 +184,4 @@ router.get("/cookie-check", async (req, res) => {
   });
 */
 
-module.exports = router;
+export default router;

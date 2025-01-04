@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const aboutUsSchema = z.object({
   title: z
@@ -14,4 +14,4 @@ const aboutUsSchema = z.object({
   is_active: z.boolean().optional(),
 });
 
-module.exports = { aboutUsSchema };
+export default { aboutUsSchema };

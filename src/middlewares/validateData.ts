@@ -1,6 +1,6 @@
-const http = require("http");
-const util = require("util");
-const multer = require("multer");
+import http from "http";
+import util from "util";
+import multer from "multer";
 const upload = multer();
 
 function validateData({ schema, data }) {
@@ -31,4 +31,4 @@ function validateData({ schema, data }) {
   }
 }
 
-module.exports = validateData;
+export default validateData;

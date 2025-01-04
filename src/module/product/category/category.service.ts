@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Category = require("./category.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Category from "./category.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 //
 
@@ -62,7 +62,7 @@ async function deleteCategory(id) {
   }
 }
 
-module.exports = {
+export default {
   deleteCategory,
   getCategories,
   getSingleCategory,

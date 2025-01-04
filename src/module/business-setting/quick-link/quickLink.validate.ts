@@ -24,4 +24,4 @@ function isPatchBodyValid({ name, is_active, description, category }) {
   }
 }
 
-module.exports = { isPostBodyValid, isPatchBodyValid };
+export default { isPostBodyValid, isPatchBodyValid };

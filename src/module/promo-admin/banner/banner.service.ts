@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Banner = require("./banner.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Banner from "./banner.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 async function getSingleBanner(updatableId) {
   try {
@@ -77,7 +77,7 @@ async function deleteBanner(id) {
   }
 }
 
-module.exports = {
+export default {
   createBanner,
   updateBanner,
   deleteBanner,

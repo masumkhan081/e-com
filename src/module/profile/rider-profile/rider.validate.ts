@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const riderSchema = z.object({
   full_name: z.string().nonempty("Full name is required."),
@@ -32,4 +32,4 @@ const riderSchema = z.object({
     .nonempty("Password is required."),
 });
 
-module.exports = { riderSchema };
+export default { riderSchema };

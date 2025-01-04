@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const paymentGatewayController = require("./paymentGateway.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { paymentConfigBaseSchema } = require("./paymentGateway.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const { uploadPaymentGatewayLogo } = require("../../../utils/uploader");
+import paymentGatewayController from "./paymentGateway.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { paymentConfigBaseSchema } from "./paymentGateway.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import { uploadPaymentGatewayLogo } from "../../../utils/uploader";
 //
 router.patch(
   "/",
@@ -23,4 +23,4 @@ router.delete(
   paymentGatewayController.deletePaymentGateway
 );
 
-module.exports = router;
+export default router;

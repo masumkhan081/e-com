@@ -1,4 +1,4 @@
-const { getHashedPassword } = require("../../utils/tokenisation");
+import { getHashedPassword } from "../../utils/tokenisation";
 
 function isPostBodyValid({ files, bodyData }) {
   const {
@@ -66,4 +66,4 @@ function isPatchBodyValid({ updatable, bodyData }) {
   };
 }
 
-module.exports = { isPostBodyValid, isPatchBodyValid };
+export default { isPostBodyValid, isPatchBodyValid };

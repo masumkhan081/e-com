@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const banner_schema = new Schema(
   {
@@ -26,4 +26,4 @@ const banner_schema = new Schema(
 
 const Banner = model("shop-banners", banner_schema);
 
-module.exports = Banner;
+export default Banner;

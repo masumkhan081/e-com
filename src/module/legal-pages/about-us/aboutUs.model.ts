@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const aboutUsSchema = new Schema(
   {
@@ -30,4 +30,4 @@ const aboutUsSchema = new Schema(
 
 const AboutUs = model("about_us", aboutUsSchema);
 
-module.exports = AboutUs;
+export default AboutUs;

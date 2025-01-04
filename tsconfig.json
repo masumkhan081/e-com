@@ -114,6 +114,6 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["src/**/*"], // Only include files in the src folder
+  "include": ["src/**/*", "0-pms-src"], // Only include files in the src folder
   "exclude": ["node_modules", "dist", "old", "auction"] // Exclude node_modules and dist folders
 }

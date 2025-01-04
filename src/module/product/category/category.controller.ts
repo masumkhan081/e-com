@@ -1,10 +1,10 @@
-const categoryService = require("./category.service");
-const httpStatus = require("http-status");
-const { promisify } = require("util");
-const fs = require("fs");
-const path = require("path");
+import categoryService from "./category.service";
+import httpStatus from "http-status";
+import { promisify } from "util";
+import fs from "fs";
+import path from "path";
 const unlinkAsync = promisify(fs.unlink);
-const Category = require("./category.model");
+import Category from "./category.model";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -13,13 +13,13 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { removeFile } = require("../../../utils/fileHandle");
-const { isPostBodyValid } = require("./category.validate");
-const { uploadHandler, fieldsMap } = require("../../../utils/uploader");
-const Product = require("../product/product.model");
+import { entities } from "../../../config/constants";
+import { removeFile } from "../../../utils/fileHandle";
+import { isPostBodyValid } from "./category.validate";
+import { uploadHandler, fieldsMap } from "../../../utils/uploader";
+import Product from "../product/product.model";
 
-async function getSingleCategory(req, res) {
+export const getSingleCategory: TypeController = async (req, res) => {
   try {
     const data = await categoryService.getSingleCategory(req.params.id);
     if (data instanceof Error) {
@@ -40,7 +40,7 @@ async function getSingleCategory(req, res) {
   }
 }
 
-async function createProductCategory(req, res) {
+export const createProductCategory: TypeController = async (req, res) => {
   try {
     let fileUrl;
     const { name, description } = req.body;
@@ -76,7 +76,7 @@ async function createProductCategory(req, res) {
   }
 }
 //
-async function updateCategory(req, res) {
+export const updateCategory: TypeController = async (req, res) => {
   try {
     const { name, description, is_active } = req.body;
     const updatableCategoryId = req.params.id;
@@ -123,7 +123,7 @@ async function updateCategory(req, res) {
   }
 }
 //
-async function getCategories(req, res) {
+export const getCategories: TypeController = async (req, res) => {
   const data = await categoryService.getCategories(req.query);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.category });
@@ -132,7 +132,7 @@ async function getCategories(req, res) {
   }
 }
 //
-async function deleteCategory(req, res) {
+export const deleteCategory: TypeController = async (req, res) => {
   try {
     const deletableId = req.params.id;
     const isUsed = Product.findOne({ category: deletableId });
@@ -168,7 +168,7 @@ async function deleteCategory(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createProductCategory,
   deleteCategory,
   getCategories,

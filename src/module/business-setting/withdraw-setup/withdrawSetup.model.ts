@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 //
 const withdrawSettingSchema = new Schema(
   {
@@ -30,4 +30,4 @@ const withdrawSettingSchema = new Schema(
 );
 
 const WithdrawSetting = model("withdraw_settings", withdrawSettingSchema);
-module.exports = WithdrawSetting;
+export default WithdrawSetting;

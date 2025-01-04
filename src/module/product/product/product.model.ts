@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 //
 const variant_schema = new Schema({
   size: {
@@ -139,4 +139,4 @@ const product_schema = new Schema(
 
 const Product = model("products", product_schema);
 
-module.exports = Product;
+export default Product;

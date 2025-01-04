@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const ads_schema = new Schema(
   {
@@ -22,4 +22,4 @@ const ads_schema = new Schema(
 
 const Ads = model("ads", ads_schema);
 
-module.exports = Ads;
+export default Ads;

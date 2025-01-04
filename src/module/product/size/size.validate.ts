@@ -1,4 +1,4 @@
-const { z } = require('zod');
+import { z } from 'zod';
 
 const sizeSchema = z.object({
   short_name: z.string()
@@ -21,4 +21,4 @@ const sizeStatusSchema = z.object({
   }),
 });
 
-module.exports = {sizeSchema,sizeStatusSchema};
+export default {sizeSchema,sizeStatusSchema};

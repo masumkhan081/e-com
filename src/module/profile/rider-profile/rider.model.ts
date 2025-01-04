@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const rider_schema = new Schema(
   {
@@ -56,4 +56,4 @@ const rider_schema = new Schema(
 
 const Rider = model("riders", rider_schema);
 
-module.exports = Rider;
+export default Rider;

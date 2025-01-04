@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const privacyPolicySchema = new Schema(
   {
@@ -30,4 +30,4 @@ const privacyPolicySchema = new Schema(
 
 const PrivacyPolicy = model("privacy_policy", privacyPolicySchema);
 
-module.exports = PrivacyPolicy;
+export default PrivacyPolicy;

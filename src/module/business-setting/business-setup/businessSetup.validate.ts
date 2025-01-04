@@ -1,6 +1,6 @@
-const { z } = require("zod");
+import { z } from "zod";
 
-const businessSetupSchema = z.object({
+export const businessSetupSchema = z.object({
   company_name: z
     .string()
     .min(1, { message: "Company name is required" }) // Making sure it's required
@@ -47,5 +47,4 @@ const businessSetupSchema = z.object({
     .string()
     .max(50, { message: "Time zone cannot be longer than 50 characters" }) // Max length validation
     .optional(),
-});
-module.exports = { businessSetupSchema };
+}); 

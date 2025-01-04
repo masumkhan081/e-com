@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 // Define a Zod schema for address validation
 
@@ -10,4 +10,4 @@ const profileSchema = z.object({
   gender: z.enum(["Male", "Female", "Other"]).optional(),
 });
 
-module.exports = profileSchema;
+export default profileSchema;

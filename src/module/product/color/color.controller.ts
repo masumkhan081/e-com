@@ -1,5 +1,5 @@
-const colorService = require("./color.service");
-const httpStatus = require("http-status");
+import colorService from "./color.service";
+import httpStatus from "http-status";
 
 const {
   sendCreateResponse,
@@ -8,9 +8,9 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 
-async function getSingleColor(req, res) {
+export const getSingleColor: TypeController = async (req, res) => {
   try {
     const data =  await colorService.getSingleColor(req.params.id);
     if (data instanceof Error) {
@@ -23,7 +23,7 @@ async function getSingleColor(req, res) {
   }
 }
 //
-async function updateColorStatus(req, res) {
+export const updateColorStatus: TypeController = async (req, res) => {
   try {
     const exist = await Color.findById(req.params.id);
     if (exist) {
@@ -48,7 +48,7 @@ async function updateColorStatus(req, res) {
   }
 }
 
-async function createColor(req, res) {
+export const createColor: TypeController = async (req, res) => {
   try {
     const data =  await colorService.createColor(req.body);
     if (data instanceof Error) {
@@ -62,7 +62,7 @@ async function createColor(req, res) {
   }
 }
 
-async function getColors(req, res) {
+export const getColors: TypeController = async (req, res) => {
   try {
     const data =  await colorService.getColors(req.query);
     if (data instanceof Error) {
@@ -75,7 +75,7 @@ async function getColors(req, res) {
   }
 }
 //
-async function updateColor(req, res) {
+export const updateColor: TypeController = async (req, res) => {
   try {
     const data =  await colorService.updateColor({
       id: req.params.id,
@@ -91,7 +91,7 @@ async function updateColor(req, res) {
   }
 }
 //
-async function deleteColor(req, res) {
+export const deleteColor: TypeController = async (req, res) => {
   try {
     const data =  await colorService.deleteColor(req.params.id);
     if (data instanceof Error) {
@@ -104,7 +104,7 @@ async function deleteColor(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createColor,
   updateColor,
   deleteColor,

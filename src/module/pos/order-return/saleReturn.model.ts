@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const sale_return_schema = new Schema(
   {
@@ -31,4 +31,4 @@ const sale_return_schema = new Schema(
 
 const SaleReturn = model("sale_return", sale_return_schema);
 
-module.exports = SaleReturn;
+export default SaleReturn;

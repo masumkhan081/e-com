@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const returnRefundSchema = z.object({
   title: z
@@ -14,4 +14,4 @@ const returnRefundSchema = z.object({
   is_active: z.boolean().optional(),
 });
 
-module.exports = { returnRefundSchema };
+export default { returnRefundSchema };

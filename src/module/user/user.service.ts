@@ -1,18 +1,18 @@
-const User = require("./user.model");
-const bcrypt = require("bcrypt");
-const { sendOTPMail, sendResetMail } = require("../../utils/mail");
-const config = require("../../config");
-const httpStatus = require("http-status");
-const { getSearchAndPagination } = require("../../utils/pagination");
-const { entities, allowed_roles } = require("../../config/constants");
-const jwt = require("jsonwebtoken");
-const { sendErrorResponse } = require("../../utils/responseHandler");
-const crypto = require("crypto-js");
-const { verifyToken, getHashedPassword } = require("../../utils/tokenisation");
-const CustomerProfile = require("../profile/customer-profile/customer.model");
-const AdminProfile = require("../profile/admin-profile/profile.model");
-const SellerProfile = require("../profile/seller-profile/profile.model");
-const Shop = require("../shop/shop.model");
+import User from "./user.model";
+import bcrypt from "bcrypt";
+import { sendOTPMail, sendResetMail } from "../../utils/mail";
+import config from "../../config";
+import httpStatus from "http-status";
+import { getSearchAndPagination } from "../../utils/pagination";
+import { entities, allowed_roles } from "../../config/constants";
+import jwt from "jsonwebtoken";
+import { sendErrorResponse } from "../../utils/responseHandler";
+import crypto from "crypto-js";
+import { verifyToken, getHashedPassword } from "../../utils/tokenisation";
+import CustomerProfile from "../profile/customer-profile/customer.model";
+import AdminProfile from "../profile/admin-profile/profile.model";
+import SellerProfile from "../profile/seller-profile/profile.model";
+import Shop from "../shop/shop.model";
 
 //
 async function register({ res, data }) {
@@ -141,7 +141,7 @@ async function login({ res, email, password }) {
   }
 }
 
-// async function logout(req, res) {
+// export const logout: TypeController = async (req, res) => {
 //   res.clearCookie(config.tokenHeaderKey);
 //   res.status(200).json("Pulled Out Succesfully");
 // }
@@ -210,7 +210,7 @@ async function updatePassword({ email, password }) {
   }
 }
 
-module.exports = {
+export default {
   register,
   login,
   verifyEmail,

@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const privacyPolicyController = require("./privacyPolicy.controller");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { privacyPolicySchema } = require("./privacyPolicy.validate");
+import privacyPolicyController from "./privacyPolicy.controller";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import validateRequest from "../../../middlewares/validateRequest";
+import { privacyPolicySchema } from "./privacyPolicy.validate";
 //
 router.get("/", privacyPolicyController.getPrivacyPolicy);
 
@@ -15,4 +15,4 @@ router.patch(
   privacyPolicyController.managePrivacyPolicy
 );
 //
-module.exports = router;
+export default router;

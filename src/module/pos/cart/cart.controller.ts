@@ -1,5 +1,5 @@
-const cartService = require("./cart.service");
-const httpStatus = require("http-status");
+import cartService from "./cart.service";
+import httpStatus from "http-status";
 //
 const {
   sendCreateResponse,
@@ -8,16 +8,16 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const Cart = require("./cart.model");
-const User = require("../../user/user.model");
-const Customer = require("../../profile/customer-profile/customer.model");
-const Product = require("../../product/product/product.model");
-const Color = require("../../product/color/color.model");
-const Coupon = require("../coupon/coupon.model");
-const Order = require("../order/order.model");
+import { entities } from "../../../config/constants";
+import Cart from "./cart.model";
+import User from "../../user/user.model";
+import Customer from "../../profile/customer-profile/customer.model";
+import Product from "../../product/product/product.model";
+import Color from "../../product/color/color.model";
+import Coupon from "../coupon/coupon.model";
+import Order from "../order/order.model";
 //
-async function manageCart(req, res) {
+export const manageCart: TypeController = async (req, res) => {
   try {
     const existing_customer = await User.findById(req.user_id);
 
@@ -177,7 +177,7 @@ async function manageCart(req, res) {
   }
 }
 //
-async function applyCoupon(req, res) {
+export const applyCoupon: TypeController = async (req, res) => {
   try {
     const { promo_code } = req.body;
 
@@ -301,7 +301,7 @@ async function applyCoupon(req, res) {
   }
 }
 //
-async function createOrderFromCart(req, res) {
+export const createOrderFromCart: TypeController = async (req, res) => {
   try {
     const existingCustomer = await User.findById(req.user_id);
     if (!existingCustomer) {
@@ -431,7 +431,7 @@ async function createOrderFromCart(req, res) {
   }
 }
 
-async function getCarts(req, res) {
+export const getCarts: TypeController = async (req, res) => {
   try {
     const data = await cartService.getCarts(req.query);
     if (data instanceof Error) {
@@ -444,7 +444,7 @@ async function getCarts(req, res) {
   }
 }
 //
-async function deleteCart(req, res) {
+export const deleteCart: TypeController = async (req, res) => {
   const data = await cartService.deleteCart(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.cart });
@@ -453,7 +453,7 @@ async function deleteCart(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createOrderFromCart,
   manageCart,
   applyCoupon,

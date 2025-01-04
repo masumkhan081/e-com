@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const deliveryController = require("./delivery.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
+import deliveryController from "./delivery.controller";
+import validateRequest from "../../../middlewares/validateRequest";
 //
 router.post("/", deliveryController.createDelivery);
 router.get("/", deliveryController.getDeliveries);
 router.patch("/:id", deliveryController.updateDelivery);
 router.delete("/:id", deliveryController.deleteDelivery);
 
-module.exports = router;
+export default router;

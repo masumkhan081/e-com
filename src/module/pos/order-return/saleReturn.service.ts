@@ -1,7 +1,7 @@
  
-const { entities } = require("../../config/constants");
-const Address = require("../../models/address.model");
-const { getSearchAndPagination } = require("../../utils/pagination");
+import { entities } from "../../config/constants";
+import Address from "../../models/address.model";
+import { getSearchAndPagination } from "../../utils/pagination";
 
 async function createAddress(data) {
   try {
@@ -66,7 +66,7 @@ async function deleteAddress(id) {
   }
 }
 
-module.exports = {
+export default {
   createAddress,
   updateAddress,
   deleteAddress,

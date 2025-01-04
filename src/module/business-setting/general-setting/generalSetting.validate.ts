@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 //
 const generalSettingSchema = z.object({
@@ -39,4 +39,4 @@ const generalSettingSchema = z.object({
     .max(500, { message: "Description must be at most 500 characters" }),
 });
 
-module.exports = { generalSettingSchema };
+export default { generalSettingSchema };

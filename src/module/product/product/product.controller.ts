@@ -1,4 +1,4 @@
-const productService = require("./product.service");
+import productService from "./product.service";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -7,18 +7,18 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities, allowed_roles } = require("../../../config/constants");
-const Product = require("./product.model");
-const { uploadHandler, fieldsMap } = require("../../../utils/uploader");
-const { removeFile } = require("../../../utils/fileHandle");
-const { product_schema, variant_schema } = require("./product.validate");
-const validateData = require("../../../middlewares/validateData");
-const Category = require("../category/category.model");
-const SubCategory = require("../sub-category/subCategory.model");
-const Unit = require("../unit/unit.model");
-const Brand = require("../brand/brand.model");
-const Size = require("../size/size.model");
-const Color = require("../color/color.model");
+import { entities, allowed_roles } from "../../../config/constants";
+import Product from "./product.model";
+import { uploadHandler, fieldsMap } from "../../../utils/uploader";
+import { removeFile } from "../../../utils/fileHandle";
+import { product_schema, variant_schema } from "./product.validate";
+import validateData from "../../../middlewares/validateData";
+import Category from "../category/category.model";
+import SubCategory from "../sub-category/subCategory.model";
+import Unit from "../unit/unit.model";
+import Brand from "../brand/brand.model";
+import Size from "../size/size.model";
+import Color from "../color/color.model";
 
 //
 async function createProduct(req, res, next) {
@@ -221,7 +221,7 @@ async function createProduct(req, res, next) {
   }
 }
 //
-async function updateProduct(req, res) {
+export const updateProduct: TypeController = async (req, res) => {
   const paths = {
     product_thumbnail: "",
     additional_product_thumbnail: [],
@@ -341,7 +341,7 @@ async function updateProduct(req, res) {
   }
 }
 
-async function getProducts(req, res) {
+export const getProducts: TypeController = async (req, res) => {
   const data = await productService.getProducts(req.query);
   if (data instanceof Error) {
     sendErrorResponse({ res, error: data, entity: entities.product });
@@ -350,7 +350,7 @@ async function getProducts(req, res) {
   }
 }
 //
-async function getSingleProduct(req, res) {
+export const getSingleProduct: TypeController = async (req, res) => {
   try {
     const data = await productService.getSingleProduct(req.params.id);
     if (data instanceof Error) {
@@ -367,7 +367,7 @@ async function getSingleProduct(req, res) {
   }
 }
 //
-async function deleteProduct(req, res) {
+export const deleteProduct: TypeController = async (req, res) => {
   try {
     const data = await productService.deleteProduct(req.params.id);
     if (data instanceof Error) {
@@ -461,7 +461,7 @@ async function updateApprovalByAdmin(req, res, next) {
 }
 
 //
-module.exports = {
+export default {
   createProduct,
   updateProduct,
   deleteProduct,

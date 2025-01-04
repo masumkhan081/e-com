@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Customer = require("./customer.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Customer from "./customer.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 const {
   updateContactUs,
 } = require("../../legal-pages/contact-us/contactUs.controller");
@@ -69,7 +69,7 @@ async function deleteCustomer(id) {
   }
 }
 //
-module.exports = {
+export default {
   createCustomer,
   updateCustomer,
   deleteCustomer,

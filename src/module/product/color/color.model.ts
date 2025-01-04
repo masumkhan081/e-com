@@ -1,5 +1,5 @@
  
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
 const color_schema = new Schema(
   {
@@ -34,4 +34,4 @@ const color_schema = new Schema(
 
 const Color = model("colors", color_schema);
 
-module.exports = Color;
+export default Color;

@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const shippingDeliveryPolicyController = require("./shippingDelivery.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { shippingAndDeliverySchema } = require("./shippingDelivery.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import shippingDeliveryPolicyController from "./shippingDelivery.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { shippingAndDeliverySchema } from "./shippingDelivery.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 
 router.get("/", shippingDeliveryPolicyController.getShippingDeliveryPolicy);
@@ -15,4 +15,4 @@ router.patch(
   shippingDeliveryPolicyController.updateShippingDeliveryPolicy
 );
 
-module.exports = router;
+export default router;

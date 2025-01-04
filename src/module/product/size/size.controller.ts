@@ -1,5 +1,5 @@
-const sizeService = require("./size.service");
-const Size = require("./size.model");
+import sizeService from "./size.service";
+import Size from "./size.model";
 
 const {
   sendCreateResponse,
@@ -9,11 +9,11 @@ const {
   sendUpdateResponse,
   response_map,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { isPostBodyValid } = require("./size.validate");
-const Product = require("../product/product.model");
+import { entities } from "../../../config/constants";
+import { isPostBodyValid } from "./size.validate";
+import Product from "../product/product.model";
 
-async function createSize(req, res) {
+export const createSize: TypeController = async (req, res) => {
   try {
     const data =  await sizeService.createSize(req.body);
     if (data instanceof Error) {
@@ -26,7 +26,7 @@ async function createSize(req, res) {
   }
 }
 //
-async function updateSizeStatus(req, res) {
+export const updateSizeStatus: TypeController = async (req, res) => {
   try {
     const exist = await Size.findById(req.params.id);
     if (exist) {
@@ -51,7 +51,7 @@ async function updateSizeStatus(req, res) {
   }
 }
 
-async function getSizes(req, res) {
+export const getSizes: TypeController = async (req, res) => {
   try {
     const data =  await sizeService.getSizes(req.query);
     if (data instanceof Error) {
@@ -64,7 +64,7 @@ async function getSizes(req, res) {
   }
 }
 //
-async function updateSize(req, res) {
+export const updateSize: TypeController = async (req, res) => {
   try {
     const exist = await Size.findById(req.params.id);
     if (exist) {
@@ -89,7 +89,7 @@ async function updateSize(req, res) {
   }
 }
 //
-async function getSingleSize(req, res) {
+export const getSingleSize: TypeController = async (req, res) => {
   try {
     const data =  await sizeService.getSingleSize(req.params.id);
     if (data instanceof Error) {
@@ -102,7 +102,7 @@ async function getSingleSize(req, res) {
   }
 }
 //
-async function deleteSize(req, res) {
+export const deleteSize: TypeController = async (req, res) => {
   try {
     const exist = await Size.findById(req.params.id);
     console.log(exist);
@@ -146,7 +146,7 @@ async function deleteSize(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createSize,
   updateSize,
   deleteSize,

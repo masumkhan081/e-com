@@ -1,5 +1,5 @@
-const socialLinkService = require("./socialLink.service");
-const SocialLink = require("./socialLink.model");
+import socialLinkService from "./socialLink.service";
+import SocialLink from "./socialLink.model";
 
 const {
   sendCreateResponse,
@@ -8,15 +8,15 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const httpStatus = require("http-status");
-const { promisify } = require("util");
-const fs = require("fs");
-const path = require("path");
+import httpStatus from "http-status";
+import { promisify } from "util";
+import fs from "fs";
+import path from "path";
 const unlinkAsync = promisify(fs.unlink);
-const { entities } = require("../../../config/constants");
-const { fieldsMap, uploadHandler } = require("../../../utils/uploader");
-const { isPostBodyValid } = require("./socialLink.validate");
-const SocialkLink = require("./socialLink.model");
+import { entities } from "../../../config/constants";
+import { fieldsMap, uploadHandler } from "../../../utils/uploader";
+import { isPostBodyValid } from "./socialLink.validate";
+import SocialkLink from "./socialLink.model";
 
 async function createSocialLink(req, res, next) {
   try {
@@ -59,7 +59,7 @@ async function createSocialLink(req, res, next) {
   }
 }
 //
-async function updateSocialLink(req, res) {
+export const updateSocialLink: TypeController = async (req, res) => {
   try {
     const { name, link, is_active } = req.body;
     console.log("name, link, is_active >> " + name, link, is_active);
@@ -126,7 +126,7 @@ async function updateSocialLink(req, res) {
 }
 
 //
-async function getSocialLinks(req, res) {
+export const getSocialLinks: TypeController = async (req, res) => {
   const data =  await socialLinkService.getSocialLinks(req.query);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -143,7 +143,7 @@ async function getSocialLinks(req, res) {
   }
 }
 //
-async function deleteSocialLink(req, res) {
+export const deleteSocialLink: TypeController = async (req, res) => {
   const data =  await socialLinkService.deleteSocialLink(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -160,7 +160,7 @@ async function deleteSocialLink(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createSocialLink,
   updateSocialLink,
   deleteSocialLink,

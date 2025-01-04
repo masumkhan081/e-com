@@ -1,4 +1,4 @@
-const z = require("zod");
+import z from "zod";
 
 const categorySchema = z.object({
   name: z
@@ -43,4 +43,4 @@ const categoryUpdateSchema = z
   })
   .strict(); // Ensure no additional fields are allowed
 
-module.exports = { categorySchema, categoryUpdateSchema };
+export default { categorySchema, categoryUpdateSchema };

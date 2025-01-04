@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const aboutUsController = require("./aboutUs.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { aboutUsSchema } = require("./aboutUs.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import aboutUsController from "./aboutUs.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { aboutUsSchema } from "./aboutUs.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 
 //
 
@@ -16,4 +16,4 @@ router.patch(
   aboutUsController.updateAboutUs
 );
 
-module.exports = router;
+export default router;

@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const profile_schema = new Schema(
   {
@@ -29,4 +29,4 @@ const profile_schema = new Schema(
 
 const Profile = model("admin", profile_schema);
 
-module.exports = Profile;
+export default Profile;

@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const shopSettingController = require("./shopSetup.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { shopSettingSchema } = require("./shopSetup.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import shopSettingController from "./shopSetup.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { shopSettingSchema } from "./shopSetup.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 router.get(
   "/",
@@ -19,4 +19,4 @@ router.patch(
   shopSettingController.manageShopSetting
 );
 
-module.exports = router;
+export default router;

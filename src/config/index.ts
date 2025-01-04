@@ -23,4 +23,4 @@ const config = {
   sender_mail_pw: process.env.HOST_EMAIL_PASSWORD || "uigctmtbjzdyfxoa",
 };
 
-module.exports = config;
+export default config;

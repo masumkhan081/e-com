@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const unitSchema = new Schema(
   {
@@ -44,4 +44,4 @@ const unitSchema = new Schema(
 
 const Unit = model("units", unitSchema);
 
-module.exports = Unit;
+export default Unit;

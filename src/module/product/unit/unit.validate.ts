@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const unitSchema = z.object({
   short_name: z
@@ -27,4 +27,4 @@ const unitStatusSchema = z.object({
   }),
 });
 
-module.exports = { unitSchema, unitStatusSchema };
+export default { unitSchema, unitStatusSchema };

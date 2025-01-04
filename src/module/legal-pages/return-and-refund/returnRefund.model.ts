@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const returnRefundSchema = new Schema(
   {
@@ -30,4 +30,4 @@ const returnRefundSchema = new Schema(
 
 const ReturnRefund = model("return_refund_policy", returnRefundSchema);
 
-module.exports = ReturnRefund;
+export default ReturnRefund;

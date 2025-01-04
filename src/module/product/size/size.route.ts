@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const sizeController = require("./size.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { sizeSchema, sizeStatusSchema } = require("./size.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import sizeController from "./size.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { sizeSchema, sizeStatusSchema } from "./size.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 router.post(
   "/",
@@ -39,4 +39,4 @@ router.delete(
   sizeController.deleteSize
 );
 
-module.exports = router;
+export default router;

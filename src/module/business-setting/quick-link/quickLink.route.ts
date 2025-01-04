@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const quickLinkController = require("./quickLink.controller");
+import quickLinkController from "./quickLink.controller";
 //
 router.post("/", quickLinkController.createQuickLink);
 router.get("/", quickLinkController.getQuickLinks);
 router.patch("/:id", quickLinkController.updateQuickLink);
 router.delete("/:id", quickLinkController.deleteQuickLink);
 
-module.exports = router;
+export default router;

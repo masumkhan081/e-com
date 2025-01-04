@@ -1,5 +1,5 @@
-const delChargeService = require("./delCharge.service");
-const httpStatus = require("http-status");
+import delChargeService from "./delCharge.service";
+import httpStatus from "http-status";
 
 const {
   sendCreateResponse,
@@ -8,9 +8,9 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 //
-async function createDeliveryCharge(req, res) {
+export const createDeliveryCharge: TypeController = async (req, res) => {
   const data =  await delChargeService.createDeliveryCharge(req.body);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -27,7 +27,7 @@ async function createDeliveryCharge(req, res) {
   }
 }
 
-async function getDeliveryCharges(req, res) {
+export const getDeliveryCharges: TypeController = async (req, res) => {
   const data =  await delChargeService.getDeliveryCharges(req.query);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -44,7 +44,7 @@ async function getDeliveryCharges(req, res) {
   }
 }
 //
-async function updateDeliveryCharge(req, res) {
+export const updateDeliveryCharge: TypeController = async (req, res) => {
   const data =  await delChargeService.updateDeliveryCharge({
     id: req.params.id,
     data: req.body,
@@ -64,7 +64,7 @@ async function updateDeliveryCharge(req, res) {
   }
 }
 //
-async function deleteDeliveryCharge(req, res) {
+export const deleteDeliveryCharge: TypeController = async (req, res) => {
   const data =  await delChargeService.deleteDeliveryCharge(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -81,7 +81,7 @@ async function deleteDeliveryCharge(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createDeliveryCharge,
   updateDeliveryCharge,
   deleteDeliveryCharge,

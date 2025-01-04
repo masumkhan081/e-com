@@ -1,4 +1,4 @@
-const { map_searchables } = require("../config/constants");
+import { map_searchables } from "../config/constants";
 
 const validateQueryParams = (entity) => (req, res, next) => {
   // search_by and search params can be present without not-filterable params
@@ -21,4 +21,4 @@ const validateQueryParams = (entity) => (req, res, next) => {
   next();
 };
 
-module.exports = validateQueryParams;
+export default validateQueryParams;

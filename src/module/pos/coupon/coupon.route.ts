@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const couponController = require("./coupon.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { coupon_schema } = require("./coupon.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import couponController from "./coupon.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { coupon_schema } from "./coupon.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 //  promo-code admin & seller
 router.post(
@@ -34,4 +34,4 @@ router.patch("/:id", couponController.updateCoupon);
 router.delete("/:id", couponController.deleteCoupon);
 
 //
-module.exports = router;
+export default router;

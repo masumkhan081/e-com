@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const contactUsSchema = z.object({
   phone: z
@@ -33,4 +33,4 @@ const contactUsSchema = z.object({
     .optional(),
 });
 
-module.exports = { contactUsSchema };
+export default { contactUsSchema };

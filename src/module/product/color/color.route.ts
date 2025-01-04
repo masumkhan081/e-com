@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const colorController = require("./color.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { colorSchema } = require("./color.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import colorController from "./color.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { colorSchema } from "./color.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 
 router.post(
   "/",
@@ -38,4 +38,4 @@ router.delete(
   colorController.deleteColor
 );
 
-module.exports = router;
+export default router;

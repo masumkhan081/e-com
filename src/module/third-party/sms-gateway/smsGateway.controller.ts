@@ -1,4 +1,4 @@
-const smsGatewayService = require("./smsGateway.service");
+import smsGatewayService from "./smsGateway.service";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -6,12 +6,12 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { gatewayEnum, SMSConfig } = require("./smsGateway.model");
-const { telesignSchema, twilioSchema } = require("./smsGateway.validate");
-const validateData = require("../../../middlewares/validateData");
+import { entities } from "../../../config/constants";
+import { gatewayEnum, SMSConfig } from "./smsGateway.model";
+import { telesignSchema, twilioSchema } from "./smsGateway.validate";
+import validateData from "../../../middlewares/validateData";
 
-async function manageSMSGateway(req, res) {
+export const manageSMSGateway: TypeController = async (req, res) => {
   try {
     const { gateway, ...configData } = req.body;
 
@@ -81,7 +81,7 @@ async function manageSMSGateway(req, res) {
   }
 }
 
-async function getSmsGateway(req, res) {
+export const getSmsGateway: TypeController = async (req, res) => {
   const data = await smsGatewayService.getSmsGateway(req.query);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -100,7 +100,7 @@ async function getSmsGateway(req, res) {
 //
 
 //
-async function deleteSmsGateway(req, res) {
+export const deleteSmsGateway: TypeController = async (req, res) => {
   try {
     const data = await smsGatewayService.deleteSMSConfig(req.params.id);
     if (data instanceof Error) {
@@ -126,7 +126,7 @@ async function deleteSmsGateway(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   manageSMSGateway,
   deleteSmsGateway,
   getSmsGateway,

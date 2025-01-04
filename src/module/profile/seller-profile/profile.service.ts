@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Profile = require("./profile.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Profile from "./profile.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 
 async function createProfile(data) {
   try {
@@ -66,7 +66,7 @@ async function deleteProfile(id) {
   }
 }
 
-module.exports = {
+export default {
   createProfile,
   updateProfile,
   deleteProfile,

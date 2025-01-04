@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const delivery_schema = new Schema(
   {
@@ -30,4 +30,4 @@ const delivery_schema = new Schema(
 
 const Delivery = model("deliveries", delivery_schema);
 
-module.exports = Delivery;
+export default Delivery;

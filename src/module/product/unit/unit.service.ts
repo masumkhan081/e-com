@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Unit = require("./unit.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Unit from "./unit.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 //
 async function createUnit(data) {
   try {
@@ -81,7 +81,7 @@ async function deleteUnit(id) {
   }
 }
 
-module.exports = {
+export default {
   deleteUnit,
   getUnits,
   createUnit,

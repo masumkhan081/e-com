@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Color = require("./color.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Color from "./color.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 // 
 //
 async function getSingleColor(id) {
@@ -82,7 +82,7 @@ async function deleteColor(id) {
   }
 }
 
-module.exports = {
+export default {
   createColor,
   updateColor,
   deleteColor,

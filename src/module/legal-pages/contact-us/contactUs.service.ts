@@ -1,5 +1,5 @@
  
-const ContactUs = require("./contactUs.model");
+import ContactUs from "./contactUs.model";
 //
 
 //
@@ -13,7 +13,7 @@ const updateContactUs = async (data) =>
   );
 //
 
-module.exports = {
+export default {
   updateContactUs,
   getContactUs,
 };

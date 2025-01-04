@@ -1,11 +1,11 @@
-const withdrawSetupService = require("./withdrawSetup.service");
+import withdrawSetupService from "./withdrawSetup.service";
 const {
   sendErrorResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 
-async function manageWithdrawSetting(req, res) {
+export const manageWithdrawSetting: TypeController = async (req, res) => {
   try {
     const data = await withdrawSetupService.manageWithdrawSetting(req.body);
 
@@ -26,7 +26,7 @@ async function manageWithdrawSetting(req, res) {
   }
 }
 
-async function getWithdrawSetting(req, res) {
+export const getWithdrawSetting: TypeController = async (req, res) => {
   try {
     const data = await withdrawSetupService.getWithdrawSetting(req.query);
 
@@ -41,7 +41,7 @@ async function getWithdrawSetting(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   manageWithdrawSetting,
   getWithdrawSetting,
 };

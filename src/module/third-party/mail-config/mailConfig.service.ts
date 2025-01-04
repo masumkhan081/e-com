@@ -1,6 +1,6 @@
  
-const { entities } = require("../../../config/constants");
-const MailConfig = require("./mailConfig.model"); 
+import { entities } from "../../../config/constants";
+import MailConfig from "./mailConfig.model"; 
 //
 const updateMailConfig = async (data) =>
   await MailConfig.findOneAndUpdate(
@@ -11,7 +11,7 @@ const updateMailConfig = async (data) =>
 //
 const getMailConfig = async () => MailConfig.find({});
 
-module.exports = {
+export default {
   updateMailConfig,
   getMailConfig,
 };

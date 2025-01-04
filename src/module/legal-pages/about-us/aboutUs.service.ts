@@ -1,4 +1,4 @@
-const AboutUs = require("./aboutUs.model");
+import AboutUs from "./aboutUs.model";
 //
 const updateAboutUs = async (data) =>
   await AboutUs.findOneAndUpdate(
@@ -9,7 +9,7 @@ const updateAboutUs = async (data) =>
 //
 const getAboutUs = async () => AboutUs.find({});
 
-module.exports = {
+export default {
   updateAboutUs,
   getAboutUs,
 };

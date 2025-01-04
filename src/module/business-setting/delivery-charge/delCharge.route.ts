@@ -1,11 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const delChargeController = require("./delCharge.controller");
+import delChargeController from "./delCharge.controller";
 //
 router.post("/", delChargeController.createDeliveryCharge);
 router.get("/", delChargeController.getDeliveryCharges);
 router.patch("/:id", delChargeController.updateDeliveryCharge);
 router.delete("/:id", delChargeController.deleteDeliveryCharge);
 //
-module.exports = router;
+export default router;
 

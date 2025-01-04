@@ -1,5 +1,5 @@
-const { z } = require("zod");
-const { Types } = require("mongoose"); // For ObjectId if necessary, or use z.string() if not
+import { z } from "zod";
+import { Types } from "mongoose"; // For ObjectId if necessary, or use z.string() if not
 //
 const coupon_schema = z.object({
   code: z
@@ -40,4 +40,4 @@ const coupon_schema = z.object({
   is_active: z.boolean().default(false),
 });
 
-module.exports = { coupon_schema };
+export default { coupon_schema };

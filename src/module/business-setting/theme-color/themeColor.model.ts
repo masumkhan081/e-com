@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const themeColorSchema = Schema({
   hex: {
@@ -26,4 +26,4 @@ const themeColorSchema = Schema({
 
 const ThemeColor = model("theme_colors", themeColorSchema);
 
-module.exports = ThemeColor;
+export default ThemeColor;

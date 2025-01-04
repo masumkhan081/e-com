@@ -1,5 +1,5 @@
-const customerService = require("./customer.service");
-const httpStatus = require("http-status");
+import customerService from "./customer.service";
+import httpStatus from "http-status";
 //
 const {
   sendCreateResponse,
@@ -8,9 +8,9 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 //
-async function createCustomer(req, res) {
+export const createCustomer: TypeController = async (req, res) => {
   const data =  await customerService.createCustomer(req.body);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.customer });
@@ -19,7 +19,7 @@ async function createCustomer(req, res) {
   }
 }
 
-async function getCustomers(req, res) {
+export const getCustomers: TypeController = async (req, res) => {
   const data =  await customerService.getCustomers(req.query);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.customer });
@@ -28,7 +28,7 @@ async function getCustomers(req, res) {
   }
 }
 //
-async function updateCustomer(req, res) {
+export const updateCustomer: TypeController = async (req, res) => {
   const data =  await customerService.updateCustomer({
     id: req.params.id,
     data: req.body,
@@ -40,7 +40,7 @@ async function updateCustomer(req, res) {
   }
 }
 //
-async function deleteCustomer(req, res) {
+export const deleteCustomer: TypeController = async (req, res) => {
   const data =  await customerService.deleteAddress(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({ res, error:data, entity: entities.customer });
@@ -53,7 +53,7 @@ async function deleteCustomer(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createCustomer,
   updateCustomer,
   deleteCustomer,

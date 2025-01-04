@@ -1,15 +1,15 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const brandController = require("./brand.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
+import brandController from "./brand.controller";
+import validateRequest from "../../../middlewares/validateRequest";
 const {
   brandSchema,
   brandStatusSchema,
   brandUpdateSchema,
 } = require("./brand.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const { uploadBrandLogo } = require("../../../utils/uploader");
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import { uploadBrandLogo } from "../../../utils/uploader";
 //
 router.post(
   "/",
@@ -45,4 +45,4 @@ router.delete(
   brandController.deleteBrand
 );
 
-module.exports = router;
+export default router;

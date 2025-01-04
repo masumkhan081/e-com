@@ -1,4 +1,4 @@
-const WithdrawSetting = require("./withdrawSetup.model");
+import WithdrawSetting from "./withdrawSetup.model";
 
 const manageWithdrawSetting = async (data) =>
   await WithdrawSetting.findOneAndUpdate(
@@ -9,7 +9,7 @@ const manageWithdrawSetting = async (data) =>
 //
 const getWithdrawSetting = async () => WithdrawSetting.find({});
 
-module.exports = {
+export default {
   manageWithdrawSetting,
   getWithdrawSetting,
 };

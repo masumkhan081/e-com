@@ -1,12 +1,12 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const categoryController = require("./category.controller");
-const { uploadCatThumbnail } = require("../../../utils/uploader");
+import categoryController from "./category.controller";
+import { uploadCatThumbnail } from "../../../utils/uploader";
 //
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { categorySchema } = require("./category.validate");
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import validateRequest from "../../../middlewares/validateRequest";
+import { categorySchema } from "./category.validate";
 //
 router.post(
   "/",
@@ -30,4 +30,4 @@ router.get("/:id", categoryController.getSingleCategory);
 //
 router.delete("/:id", categoryController.deleteCategory);
 
-module.exports = router;
+export default router;

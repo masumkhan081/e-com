@@ -1,6 +1,6 @@
-const quickLinkService = require("./quickLink.service");
-const httpStatus = require("http-status");
-const QuickLink = require("./quickLink.model");
+import quickLinkService from "./quickLink.service";
+import httpStatus from "http-status";
+import QuickLink from "./quickLink.model";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -8,10 +8,10 @@ const {
   sendFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { uploadSocialIcon } = require("../../../utils/fileHandle");
+import { entities } from "../../../config/constants";
+import { uploadSocialIcon } from "../../../utils/fileHandle";
 
-async function createQuickLink(req, res) {
+export const createQuickLink: TypeController = async (req, res) => {
   const data =  await quickLinkService.createQuickLink(req.body);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -30,7 +30,7 @@ async function createQuickLink(req, res) {
 
 //
 
-async function updateQuickLink(req, res) {
+export const updateQuickLink: TypeController = async (req, res) => {
   const data =  await quickLinkService.updateQuickLink({
     id: req.params.id,
     data: req.body,
@@ -51,7 +51,7 @@ async function updateQuickLink(req, res) {
 }
 
 //
-async function getQuickLinks(req, res) {
+export const getQuickLinks: TypeController = async (req, res) => {
   const data =  await quickLinkService.getQuickLinks(req.query);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -68,7 +68,7 @@ async function getQuickLinks(req, res) {
   }
 }
 //
-async function deleteQuickLink(req, res) {
+export const deleteQuickLink: TypeController = async (req, res) => {
   const data =  await quickLinkService.deleteQuickLink(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -85,7 +85,7 @@ async function deleteQuickLink(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createQuickLink,
   updateQuickLink,
   deleteQuickLink,

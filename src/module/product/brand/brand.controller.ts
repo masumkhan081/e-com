@@ -1,6 +1,6 @@
-const brandService = require("./brand.service");
-const Brand = require("./brand.model");
-const Product = require("../product/product.model");
+import brandService from "./brand.service";
+import Brand from "./brand.model";
+import Product from "../product/product.model";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -10,13 +10,13 @@ const {
   response_map,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { isPostBodyValid } = require("./brand.validate");
-const { fieldsMap, uploadHandler } = require("../../../utils/uploader");
-const { removeFile } = require("../../../utils/fileHandle");
+import { entities } from "../../../config/constants";
+import { isPostBodyValid } from "./brand.validate";
+import { fieldsMap, uploadHandler } from "../../../utils/uploader";
+import { removeFile } from "../../../utils/fileHandle";
 //
 
-async function createBrand(req, res) {
+export const createBrand: TypeController = async (req, res) => {
   let logo;
   try {
     const fieldName = fieldsMap[entities.brand][0].name;
@@ -43,7 +43,7 @@ async function createBrand(req, res) {
   }
 }
 
-async function getBrands(req, res) {
+export const getBrands: TypeController = async (req, res) => {
   try {
     const data =  await brandService.getBrands(req.query);
     if (data instanceof Error) {
@@ -55,7 +55,7 @@ async function getBrands(req, res) {
     sendErrorResponse({ res, error, entity: entities.brand });
   }
 }
-async function getSingleBrand(req, res) {
+export const getSingleBrand: TypeController = async (req, res) => {
   try {
     const data =  await brandService.getSingleBrand(req.params.id);
     if (data instanceof Error) {
@@ -73,7 +73,7 @@ async function getSingleBrand(req, res) {
 }
 
 //
-async function updateBrand(req, res) {
+export const updateBrand: TypeController = async (req, res) => {
   let logo;
   try {
     const existingBrand = await Brand.findById(req.params.id);
@@ -122,7 +122,7 @@ async function updateBrand(req, res) {
   }
 }
 //
-async function deleteBrand(req, res) {
+export const deleteBrand: TypeController = async (req, res) => {
   try {
     const existingBrand = await Brand.findById(req.params.id);
 
@@ -164,7 +164,7 @@ async function deleteBrand(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createBrand,
   updateBrand,
   deleteBrand,

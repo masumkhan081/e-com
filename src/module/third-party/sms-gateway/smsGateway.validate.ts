@@ -1,4 +1,4 @@
-const z = require("zod");
+import z from "zod";
 // Base Zod schema
 const smsConfigBaseSchema = z.object({
   gateway: z.enum(["TWILIO", "TELESIGN"]),
@@ -16,7 +16,7 @@ const twilioSchema = z.object({
   from: z.string().min(1, "Stripe published key is required"),
 });
 
-module.exports = {
+export default {
   smsConfigBaseSchema,
   telesignSchema,
   twilioSchema,

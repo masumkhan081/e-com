@@ -1,12 +1,12 @@
-const aboutUsService = require("./aboutUs.service");
+import aboutUsService from "./aboutUs.service";
 const {
   sendErrorResponse,
   sendSingleFetchResponse,
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 //
-async function getAboutUs(req, res) {
+export const getAboutUs: TypeController = async (req, res) => {
   try {
     const data = await aboutUsService.getAboutUs();
 
@@ -26,7 +26,7 @@ async function getAboutUs(req, res) {
   }
 }
 //
-async function updateAboutUs(req, res) {
+export const updateAboutUs: TypeController = async (req, res) => {
   try {
     const result = await aboutUsService.updateAboutUs(req.body);
 
@@ -54,7 +54,7 @@ async function updateAboutUs(req, res) {
 }
 
 //
-module.exports = {
+export default {
   updateAboutUs,
   getAboutUs,
 };

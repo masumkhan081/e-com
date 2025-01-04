@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const withdrawSetupController = require("./withdrawSetup.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const { withdraw_setting_schema } = require("./withdrawSetup.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
+import withdrawSetupController from "./withdrawSetup.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import { withdraw_setting_schema } from "./withdrawSetup.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
 //
 
 router.patch(
@@ -19,4 +19,4 @@ router.get(
   withdrawSetupController.getWithdrawSetting
 );
 
-module.exports = router;
+export default router;

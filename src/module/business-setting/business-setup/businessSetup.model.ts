@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 //
 const businessSetupSchema = new Schema({
   company_name: {
@@ -50,4 +50,4 @@ const businessSetupSchema = new Schema({
 
 const BusinessSetup = model("business_setup", businessSetupSchema);
 
-module.exports = BusinessSetup;
+export default BusinessSetup;

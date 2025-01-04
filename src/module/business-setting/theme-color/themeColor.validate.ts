@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const themeColorSchema = z.object({
   hex: z
@@ -20,4 +20,4 @@ const themeColorSchema = z.object({
   ]),
 });
 
-module.exports = { themeColorSchema };
+export default { themeColorSchema };

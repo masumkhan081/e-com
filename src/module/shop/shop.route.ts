@@ -1,9 +1,9 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const shopController = require("./shop.controller");
-const { uploadShopCreationFiles } = require("../../utils/uploader");
-const { allowed_roles } = require("../../config/constants");
-const accessControl = require("../../middlewares/verifyToken");
+import shopController from "./shop.controller";
+import { uploadShopCreationFiles } from "../../utils/uploader";
+import { allowed_roles } from "../../config/constants";
+import accessControl from "../../middlewares/verifyToken";
 //
 router.get("/", accessControl([allowed_roles.admin]), shopController.getShops);
 //
@@ -27,4 +27,4 @@ router.patch(
 // );
 //
 
-module.exports = router;
+export default router;

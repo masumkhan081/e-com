@@ -1,4 +1,4 @@
-const httpStatus = require("http-status");
+import httpStatus from "http-status";
 //
 //
 function sendSingleFetchResponse({ res, data, entity, is_singular = false }) {
@@ -146,7 +146,7 @@ const response_map = {
   creationFailed: { code: 400, message: "Creation failed" },
 };
 
-module.exports = {
+export default {
   sendFetchResponse,
   sendSingleFetchResponse,
   sendCreateResponse,

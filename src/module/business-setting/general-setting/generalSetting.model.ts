@@ -1,6 +1,6 @@
  
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const footerSectionSchema = new Schema({
   phone: {
@@ -78,4 +78,4 @@ const generalSettingSchema = new Schema(
 
 const GeneralSetting = model("general_settings", generalSettingSchema);
 
-module.exports = GeneralSetting;
+export default GeneralSetting;

@@ -1,8 +1,8 @@
  
-const { entities } = require("../../../config/constants");
-const Rider = require("./rider.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
-const { removeFile } = require("../../../utils/fileHandle"); 
+import { entities } from "../../../config/constants";
+import Rider from "./rider.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
+import { removeFile } from "../../../utils/fileHandle"; 
 
 //
 
@@ -80,7 +80,7 @@ async function deleteRider(id) {
   }
 }
 
-module.exports = {
+export default {
   createRider,
   updateRider,
   deleteRider,

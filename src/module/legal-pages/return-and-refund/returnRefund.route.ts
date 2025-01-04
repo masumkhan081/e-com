@@ -1,10 +1,10 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const returnRefundController = require("./returnRefund.controller");
-const { returnRefundSchema } = require("./returnRefund.validate");
-const accessControl = require("../../../middlewares/verifyToken");
-const { allowed_roles } = require("../../../config/constants");
-const validateRequest = require("../../../middlewares/validateRequest");
+import returnRefundController from "./returnRefund.controller";
+import { returnRefundSchema } from "./returnRefund.validate";
+import accessControl from "../../../middlewares/verifyToken";
+import { allowed_roles } from "../../../config/constants";
+import validateRequest from "../../../middlewares/validateRequest";
 //
 router.get("/", returnRefundController.getReturnRefunds);
 //
@@ -15,4 +15,4 @@ router.patch(
   returnRefundController.updateReturnRefund
 );
 
-module.exports = router;
+export default router;

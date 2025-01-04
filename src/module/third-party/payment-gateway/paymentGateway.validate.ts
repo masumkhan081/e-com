@@ -1,4 +1,4 @@
-const z = require("zod");
+import z from "zod";
 // Base Zod schema
 const paymentConfigBaseSchema = z.object({
   title: z
@@ -75,7 +75,7 @@ const paystackSchema = z.object({
     .max(255, "Merchant email cannot exceed 255 characters"),
 });
 
-module.exports = {
+export default {
   paymentConfigBaseSchema,
   payPalSchema,
   bkashSchema,

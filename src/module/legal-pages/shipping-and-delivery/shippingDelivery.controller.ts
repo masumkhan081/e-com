@@ -1,12 +1,12 @@
-const shippingDeliveryPolicyService = require("./shippingDelivery.service");
-const httpStatus = require("http-status");
+import shippingDeliveryPolicyService from "./shippingDelivery.service";
+import httpStatus from "http-status";
 const {
   sendErrorResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
+import { entities } from "../../../config/constants";
 
-async function getShippingDeliveryPolicy(req, res) {
+export const getShippingDeliveryPolicy: TypeController = async (req, res) => {
   try {
     const data =
       await shippingDeliveryPolicyService.getShippingDeliveryPolicy();
@@ -27,7 +27,7 @@ async function getShippingDeliveryPolicy(req, res) {
   }
 }
 //
-async function updateShippingDeliveryPolicy(req, res) {
+export const updateShippingDeliveryPolicy: TypeController = async (req, res) => {
   try {
     const result =
       await shippingDeliveryPolicyService.updateShippingDeliveryPolicy(
@@ -59,7 +59,7 @@ async function updateShippingDeliveryPolicy(req, res) {
 }
 
 //
-module.exports = {
+export default {
   updateShippingDeliveryPolicy,
   getShippingDeliveryPolicy,
 };

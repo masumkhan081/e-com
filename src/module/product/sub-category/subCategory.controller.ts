@@ -1,6 +1,6 @@
-const subCategoryService = require("./subCategory.service");
-const httpStatus = require("http-status");
-const SubCategory = require("./subCategory.model");
+import subCategoryService from "./subCategory.service";
+import httpStatus from "http-status";
+import SubCategory from "./subCategory.model";
 const {
   sendCreateResponse,
   sendDeletionResponse,
@@ -9,14 +9,14 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../../utils/responseHandler");
-const { entities } = require("../../../config/constants");
-const { removeFile } = require("../../../utils/fileHandle");
-const { isPostBodyValid } = require("./subCategory.validate");
-const { uploadHandler, fieldsMap } = require("../../../utils/uploader");
-const Category = require("../category/category.model");
+import { entities } from "../../../config/constants";
+import { removeFile } from "../../../utils/fileHandle";
+import { isPostBodyValid } from "./subCategory.validate";
+import { uploadHandler, fieldsMap } from "../../../utils/uploader";
+import Category from "../category/category.model";
 //
 
-async function getSingleSubCategory(req, res) {
+export const getSingleSubCategory: TypeController = async (req, res) => {
   try {
     const data = await subCategoryService.getSingleSubCategory(req.params.id);
     if (data instanceof Error) {
@@ -37,7 +37,7 @@ async function getSingleSubCategory(req, res) {
   }
 }
 
-async function createSubCategory(req, res) {
+export const createSubCategory: TypeController = async (req, res) => {
   let fileUrl;
   try {
     //
@@ -82,7 +82,7 @@ async function createSubCategory(req, res) {
   }
 }
 //
-async function updateSubCategory(req, res) {
+export const updateSubCategory: TypeController = async (req, res) => {
   let fileUrl;
   try {
     const { name, category, description, is_active } = req.body;
@@ -142,7 +142,7 @@ async function updateSubCategory(req, res) {
   }
 }
 
-async function getSubCategories(req, res) {
+export const getSubCategories: TypeController = async (req, res) => {
   const data = await subCategoryService.getSubCategories(req.query);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -160,7 +160,7 @@ async function getSubCategories(req, res) {
 }
 
 //
-async function deleteSubCategory(req, res) {
+export const deleteSubCategory: TypeController = async (req, res) => {
   const data = await subCategoryService.deleteSubCategory(req.params.id);
   if (data instanceof Error) {
     sendErrorResponse({
@@ -177,7 +177,7 @@ async function deleteSubCategory(req, res) {
   }
 }
 //
-module.exports = {
+export default {
   createSubCategory,
   updateSubCategory,
   deleteSubCategory,

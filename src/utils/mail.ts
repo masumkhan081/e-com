@@ -1,8 +1,8 @@
 require("dotenv").config();
-const nodemailer = require("nodemailer");
-const CryptoJS = require("crypto-js");
-const jwt = require("jsonwebtoken");
-const config = require("../config");
+import nodemailer from "nodemailer";
+import CryptoJS from "crypto-js";
+import jwt from "jsonwebtoken";
+import config from "../config";
 //
 //  send otp to user email for email verification
 const sendOTPMail = async (email) => {
@@ -140,7 +140,7 @@ function getOtpToken({ otp, email, phone }) {
   ).toString();
 }
 
-module.exports = {
+export default {
   sendResetMail,
   sendOTPMail,
   generateOTP,

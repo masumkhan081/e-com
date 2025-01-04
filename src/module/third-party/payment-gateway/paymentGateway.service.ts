@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const { PaymentConfig } = require("./paymentGateway.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import { PaymentConfig } from "./paymentGateway.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 //
 async function createPaymentGateway(data) {
   try {
@@ -73,7 +73,7 @@ async function deletePaymentGateway(id) {
   }
 }
 
-module.exports = {
+export default {
   createPaymentGateway,
   updatePaymentGateway,
   deletePaymentGateway,

@@ -1,12 +1,12 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const tktTypeController = require("./tktType.controller");
-const validateRequest = require("../../../middlewares/validateRequest");
-const ticketIssueTypeSchmea = require("./tktType.validate");
+import tktTypeController from "./tktType.controller";
+import validateRequest from "../../../middlewares/validateRequest";
+import ticketIssueTypeSchmea from "./tktType.validate";
 //
 router.post("/", tktTypeController.createTktType);
 router.get("/", tktTypeController.getTktTypes);
 router.patch("/:id", tktTypeController.updateTktType);
 router.delete("/:id", tktTypeController.deleteTktType);
 
-module.exports = router;
+export default router;

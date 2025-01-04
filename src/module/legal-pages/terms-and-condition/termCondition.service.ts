@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const TermCondition = require("./termCondition.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import TermCondition from "./termCondition.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 //
 const updateTermCondition = async (data) =>
   await TermCondition.findOneAndUpdate(
@@ -13,7 +13,7 @@ const updateTermCondition = async (data) =>
 const getTermCondition = async () => TermCondition.find({});
 
 //
-module.exports = {
+export default {
   updateTermCondition,
   getTermCondition,
 };

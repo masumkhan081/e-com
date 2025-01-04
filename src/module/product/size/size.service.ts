@@ -1,7 +1,7 @@
  
-const { entities } = require("../../../config/constants");
-const Size = require("./size.model");
-const { getSearchAndPagination } = require("../../../utils/pagination");
+import { entities } from "../../../config/constants";
+import Size from "./size.model";
+import { getSearchAndPagination } from "../../../utils/pagination";
 //
 async function createSize(data) {
   try {
@@ -95,7 +95,7 @@ async function deleteSize(id) {
   }
 }
 //
-module.exports = {
+export default {
   createSize,
   updateSize,
   deleteSize,

@@ -1,7 +1,7 @@
  
-const { entities } = require("../config/constants");
-const Staff = require("../models/staff.model");
-const { getSearchAndPagination } = require("../utils/pagination");
+import { entities } from "../config/constants";
+import Staff from "../models/staff.model";
+import { getSearchAndPagination } from "../utils/pagination";
 
 async function createStaff(data) {
   try {
@@ -66,7 +66,7 @@ async function deleteStaff(id) {
   }
 }
 
-module.exports = {
+export default {
   createStaff,
   updateStaff,
   deleteStaff,

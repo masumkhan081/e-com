@@ -1,4 +1,4 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const privacyPolicySchema = z.object({
   title: z
@@ -12,4 +12,4 @@ const privacyPolicySchema = z.object({
   is_active: z.boolean().default(true), // Default is true
 });
 
-module.exports = { privacyPolicySchema };
+export default { privacyPolicySchema };

@@ -1,4 +1,4 @@
-const { verifyToken } = require("../utils/tokenisation");
+import { verifyToken } from "../utils/tokenisation";
 
 function accessControll(accessRoles) {
   return async (req, res, next) => {
@@ -41,4 +41,4 @@ const forbid = (res) =>
     message: "Access Forbidden !",
   });
 
-module.exports = accessControll;
+export default accessControll;
