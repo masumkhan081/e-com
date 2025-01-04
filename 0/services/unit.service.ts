@@ -2,14 +2,14 @@
 import { entities } from "../config/constants";
 import Unit from "../models/unit.model";
 import { IDType, QueryParams } from "../types/requestResponse";
-import { IUnit, IUnitUpdatePayload } from "../types/unit.type";
+import { ICreate, IUpdate } from "../types/unit.type";
 import getSearchAndPagination from "../utils/queryHandler";
 //
-const createUnit = async (data: IUnit) => await Unit.create(data);
+const createUnit = async (data: ICreate) => await Unit.create(data);
 //
 const getSingleUnit = async (id: IDType) => Unit.findById(id);
 //
-const updateUnit = async ({ id, data }: IUnitUpdatePayload) =>
+const updateUnit = async ({ id, data }: IUpdate) =>
   await Unit.findByIdAndUpdate(id, data, { new: true });
 //
 const deleteUnit = async (id: IDType) => await Unit.findByIdAndDelete(id);
