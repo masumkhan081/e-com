@@ -1,11 +1,12 @@
 import multer from "multer";
+import { Express } from 'express';
 const upload = multer({ dest: "../../public/" });
 import { storageMap } from "./fileHandle";
 import { entities } from "../config/constants";
 import fs from "fs";
 import path from "path";
 
-const fieldsMap = {
+export const fieldsMap = {
   [entities.brand]: [{ name: "brand_logo", maxCount: 1, required: true }],
   // promotion mgmt - admin
   [entities.banner]: [
@@ -49,32 +50,32 @@ const fieldsMap = {
 };
 // --------------------------------------------------------------------------------------------------------------------------------------
 
-const uploadBrandLogo = upload.fields(fieldsMap[entities.brand]);
+export const uploadBrandLogo = upload.fields(fieldsMap[entities.brand]);
 // shop
-const uploadShopCreationFiles = upload.fields(fieldsMap[entities.shop]);
+export const uploadShopCreationFiles = upload.fields(fieldsMap[entities.shop]);
 // business setting   - admin
-const uploadGeneralSettingFiles = upload.fields(
+export const uploadGeneralSettingFiles = upload.fields(
   fieldsMap[entities.general_setting]
 );
-const uploadSocialLink = upload.fields(fieldsMap[entities.social_link]);
+export const uploadSocialLink = upload.fields(fieldsMap[entities.social_link]);
 //   promotion mgtmt  - admin
-const uploadAdThumbnail = upload.fields(fieldsMap[entities.ad]);
-const uploadBannerThumbnail = upload.fields(fieldsMap[entities.banner]);
-const uploadRiderProfile = upload.fields(fieldsMap[entities.rider]);
+export const uploadAdThumbnail = upload.fields(fieldsMap[entities.ad]);
+export const uploadBannerThumbnail = upload.fields(fieldsMap[entities.banner]);
+export const uploadRiderProfile = upload.fields(fieldsMap[entities.rider]);
 //   category   subcategory  - admin
-const uploadSubCatThumbnail = upload.fields(fieldsMap[entities.sub_category]);
-const uploadCatThumbnail = upload.fields(fieldsMap[entities.category]);
+export const uploadSubCatThumbnail = upload.fields(fieldsMap[entities.sub_category]);
+export const uploadCatThumbnail = upload.fields(fieldsMap[entities.category]);
 //   promotion mgtmt  - seller
-const uploadShopBanner = upload.fields(fieldsMap[entities.shop_banner]);
+export const uploadShopBanner = upload.fields(fieldsMap[entities.shop_banner]);
 //
-const uploadProductImages = upload.fields(fieldsMap[entities.product]);
-const uploadPaymentGatewayLogo = upload.fields(
+export const uploadProductImages = upload.fields(fieldsMap[entities.product]);
+export const uploadPaymentGatewayLogo = upload.fields(
   fieldsMap[entities.payment_gateway]
 );
 //
-async function uploadHandler({ entity, file }: { entity: string; file: Buffer | Blob }) {
+export async function uploadHandler({ entity, file }: { entity: string; file: Express.Multer.File }) {
   try {
-    const uploadDir = path.join(__dirname, storageMap[entity].destination);
+    const uploadDir = path.join(__dirname, storageMap[entity as keyof typeof storageMap].destination);
     try {
       if (!fs.existsSync(uploadDir)) {
         fs.mkdirSync(uploadDir);
@@ -88,29 +89,14 @@ async function uploadHandler({ entity, file }: { entity: string; file: Buffer | 
     const timestamp = Date.now();
     const ext = path.extname(file.originalname);
     const basename = path.basename(file.originalname, ext);
-    const newFilePath = `${storageMap[entity].save_directory}${basename}-${timestamp}${ext}`;
+    const newFilePath = `${storageMap[entity as keyof typeof storageMap].save_directory}${basename}-${timestamp}${ext}`;
     //
     const writeData = fs.writeFileSync(newFilePath, readData);
     return newFilePath;
   } catch (error) {
-    console.log("err: " + error.message);
-    res.status(400).send({ message: "error processing file" });
+    if (error instanceof Error)
+      console.log("err: " + error.message);
+    // res.status(400).send({ message: "error processing file" });
   }
 }
 
-export default {
-  uploadHandler,
-  fieldsMap,
-  uploadBrandLogo,
-  uploadRiderProfile,
-  uploadGeneralSettingFiles,
-  uploadAdThumbnail,
-  uploadBannerThumbnail,
-  uploadSocialLink,
-  uploadShopCreationFiles,
-  uploadShopBanner,
-  uploadCatThumbnail,
-  uploadSubCatThumbnail,
-  uploadProductImages,
-  uploadPaymentGatewayLogo,
-};

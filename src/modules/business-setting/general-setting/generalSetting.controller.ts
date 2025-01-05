@@ -11,6 +11,18 @@ import {
 } from '../../../utils/responseHandler';
 
 type TypeController = (req: Request, res: Response) => Promise<void>;
+interface File {
+  // Define the properties of your File object here
+  fieldname: string;
+  originalname: string;
+  mimetype: string;
+  size: number;
+  buffer: Buffer;
+}
+
+interface FilesMap {
+  [fieldname: string]: File[];
+}
 
 export const manageGeneralSetting: TypeController = async (req, res) => {
   const paths: Record<string, string> = {};
@@ -20,12 +32,16 @@ export const manageGeneralSetting: TypeController = async (req, res) => {
 
     // Upload file paths for fields in the general setting
     for (const field of fieldsMap[entities.general_setting]) {
-      if (req.files && req.files[field.name]) {
+
+      // 
+      const uploadedFile = (req.files as FilesMap)?.[field.name]?.[0];
+      if (uploadedFile) {
         paths[field.name] = await uploadHandler({
           entity: field.name,
           file: req.files[field.name][0],
         });
       }
+      //  
     }
 
     // Destructure request body values with defaults for update if the field is not provided
