@@ -1,9 +1,9 @@
 import { Router } from "express";
 const router = Router();
 import shopController from "./shop.controller";
-import { uploadShopCreationFiles } from "../../utils/uploader";
-import { allowed_roles } from "../../config/constants";
-import accessControl from "../../middlewares/verifyToken";
+import { uploadShopCreationFiles } from "../../../utils/uploader";
+import { allowed_roles } from "../../../config/constants";
+import accessControl from "../../../middlewares/verifyToken";
 //
 router.get("/", accessControl([allowed_roles.admin]), shopController.getShops);
 //

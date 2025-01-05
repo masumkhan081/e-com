@@ -9,9 +9,9 @@ export default [
   },
   {
     ignores: [
-      "old",  
-      "auction", 
-      "dist" 
+      "0",
+      "dist",
+      "experiment"
     ]
   },
   {

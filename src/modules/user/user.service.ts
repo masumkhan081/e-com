@@ -12,7 +12,7 @@ import { verifyToken, getHashedPassword } from "../../utils/tokenisation";
 import CustomerProfile from "../profile/customer-profile/customer.model";
 import AdminProfile from "../profile/admin-profile/profile.model";
 import SellerProfile from "../profile/seller-profile/profile.model";
-import Shop from "../shop/shop.model";
+import Shop from "../shop/shop/shop.model";
 
 //
 async function register({ res, data }) {

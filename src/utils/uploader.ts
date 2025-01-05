@@ -71,10 +71,8 @@ const uploadProductImages = upload.fields(fieldsMap[entities.product]);
 const uploadPaymentGatewayLogo = upload.fields(
   fieldsMap[entities.payment_gateway]
 );
-
 //
-//
-async function uploadHandler({ entity, file }) {
+async function uploadHandler({ entity, file }: { entity: string; file: Buffer | Blob }) {
   try {
     const uploadDir = path.join(__dirname, storageMap[entity].destination);
     try {

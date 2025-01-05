@@ -1,11 +1,10 @@
-import multer from "multer";
 import fs from "fs";
 import path from "path";
 import { entities } from "../config/constants";
 import { promisify } from "util";
 const unlinkAsync = promisify(fs.unlink);
 //
-const storageMap = {
+export const storageMap = {
   brand_logo: {
     destination: "../../public/brand-logos",
     max_upload_size: 1024 * 1024 * 3,
@@ -44,13 +43,6 @@ const storageMap = {
     accepted_file_types: /jpeg|jpg|png|gif|webp|svg/,
     save_directory: "public/shop-logos/",
     unlink_directory: "../../../public/shop-logos",
-  },
-  shop_banner: {
-    destination: "../../public/shop-banners",
-    max_upload_size: 1024 * 1024 * 3,
-    accepted_file_types: /jpeg|jpg|png|gif|webp|svg/,
-    save_directory: "public/shop-banners/",
-    unlink_directory: "../../../public/shop-banners",
   },
   seller_profile: {
     destination: "../../public/seller_profiles",
@@ -123,8 +115,19 @@ const storageMap = {
     unlink_directory: "../../../../public/payment-gateways",
   },
 };
-
-function checkFileType({ file, fileTypes, cb }) {
+// 
+interface File {
+  originalname: string;
+  mimetype: string;
+}
+type FileTypes = RegExp;
+type CallbackFunction = (error: string | null, isValid?: boolean) => void;
+// 
+export function checkFileType({ file, fileTypes, cb }: {
+  file: File,
+  fileTypes: FileTypes,
+  cb: CallbackFunction
+}) {
   const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = fileTypes.test(file.mimetype);
 
@@ -135,7 +138,7 @@ function checkFileType({ file, fileTypes, cb }) {
   }
 }
 
-async function removeFile({ fileUrl }) {
+export async function removeFile({ fileUrl }: { fileUrl: string }) {
   try {
     const deleteUrl = path.join(__dirname, `../../${fileUrl}`);
     if (fs.existsSync(deleteUrl)) {
@@ -146,7 +149,4 @@ async function removeFile({ fileUrl }) {
   }
 }
 
-export default {
-  storageMap,
-  removeFile,
-};
+

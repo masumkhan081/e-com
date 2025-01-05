@@ -5,7 +5,7 @@ import {} from "../../utils/responseHandler";
 import { getHashedPassword, verifyToken } from "../../utils/tokenisation";
 import User from "./user.model";
 import { sendOTPMail, sendResetMail } from "../../utils/mail";
-import Shop from "../shop/shop.model";
+import Shop from "../shop/shop/shop.model";
 import SellerProfile from "../profile/seller-profile/profile.model";
 import { allowed_roles, entities } from "../../config/constants";
 import { fieldsMap, uploadHandler } from "../../utils/uploader";

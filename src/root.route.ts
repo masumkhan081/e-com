@@ -26,7 +26,7 @@ import bannerRoutes from "./modules/promo-admin/banner/banner.route";
 //  promotion management - seller
 import shopBannerRoutes from "./modules/shop/shop-banner/banner.route";
 //  product & shop related routes - seller part
-import shopRoutes from "./modules/shop/shop.route";
+import shopRoutes from "./modules/shop/shop/shop.route";
 import categoryRoutes from "./modules/product/category/category.route";
 import subCategoryRoutes from "./modules/product/sub-category/subCategory.route";
 import colorRoutes from "./modules/product/color/color.route";

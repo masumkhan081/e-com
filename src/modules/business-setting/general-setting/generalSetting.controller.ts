@@ -1,49 +1,52 @@
-import generalSettingService from "./generalSetting.service";
-
-const {
+import { Request, Response } from 'express';
+import generalSettingService from './generalSetting.service';
+import { entities } from '../../../config/constants';
+import { fieldsMap, uploadHandler } from '../../../utils/uploader';
+import GeneralSetting from './generalSetting.model';
+import {
   sendCreateResponse,
   sendErrorResponse,
   sendUpdateResponse,
   sendSingleFetchResponse,
-} = require("../../../utils/responseHandler");
-import { entities } from "../../../config/constants";
-import { fieldsMap, uploadHandler } from "../../../utils/uploader";
-import GeneralSetting from "./generalSetting.model";
+} from '../../../utils/responseHandler';
+
+type TypeController = (req: Request, res: Response) => Promise<void>;
 
 export const manageGeneralSetting: TypeController = async (req, res) => {
-  const paths = {};
+  const paths: Record<string, string> = {};
+
   try {
-    const isExist = await GeneralSetting.findOne({}); // Check if a general setting already exists
+    const isExist = await GeneralSetting.findOne({});
 
     // Upload file paths for fields in the general setting
-    const len = fieldsMap[entities.general_setting].length;
-    for (let i = 0; i < len; i++) {
-      const fieldName = fieldsMap[entities.general_setting][i].name;
-      paths[fieldName] = await uploadHandler({
-        entity: fieldName,
-        file: req.files[fieldName][0],
-      });
+    for (const field of fieldsMap[entities.general_setting]) {
+      if (req.files && req.files[field.name]) {
+        paths[field.name] = await uploadHandler({
+          entity: field.name,
+          file: req.files[field.name][0],
+        });
+      }
     }
 
     // Destructure request body values with defaults for update if the field is not provided
     const {
-      website_name = isExist?.website_name,
-      website_title = isExist?.website_title,
-      footer_phone = isExist?.footer_section?.phone,
-      footer_mail = isExist?.footer_section?.email,
-      footer_text = isExist?.footer_section?.text,
-      footer_address = isExist?.footer_section?.address,
-      footer_description = isExist?.footer_section?.description,
-      is_app_link_visible = isExist?.app_links?.is_app_link_visible,
-      appstore_link = isExist?.app_links?.appstore_link,
-      playstore_link = isExist?.app_links?.playstore_link,
+      website_name = isExist?.website_name || '',
+      website_title = isExist?.website_title || '',
+      footer_phone = isExist?.footer_section?.phone || '',
+      footer_mail = isExist?.footer_section?.email || '',
+      footer_text = isExist?.footer_section?.text || '',
+      footer_address = isExist?.footer_section?.address || '',
+      footer_description = isExist?.footer_section?.description || '',
+      is_app_link_visible = isExist?.app_links?.is_app_link_visible || false,
+      appstore_link = isExist?.app_links?.appstore_link || '',
+      playstore_link = isExist?.app_links?.playstore_link || '',
     } = req.body;
 
-    const website_logo = paths["website_logo"] || isExist?.website_logo;
-    const textual_logo = paths["textual_logo"] || isExist?.textual_logo;
+    const website_logo = paths["website_logo"] || isExist?.website_logo || '';
+    const textual_logo = paths["textual_logo"] || isExist?.textual_logo || '';
 
     // Construct general setting data with either new or existing values
-    const generalSettingData = {
+    const generalSettingData: GeneralSetting = {
       website_name,
       website_title,
       website_logo,
@@ -62,10 +65,10 @@ export const manageGeneralSetting: TypeController = async (req, res) => {
       },
     };
 
-    let result;
+    let result: GeneralSetting | null;
+
     if (isExist) {
       // Update if the setting already exists
-      console.log("exist ..  " + isExist._id);
       result = await GeneralSetting.findByIdAndUpdate(
         isExist._id,
         generalSettingData,
@@ -91,7 +94,7 @@ export const manageGeneralSetting: TypeController = async (req, res) => {
     console.log("err: " + error.message);
     sendErrorResponse({ res, error, entity: entities.general_setting });
   }
-}
+};
 
 export const getGeneralSettings: TypeController = async (req, res) => {
   try {
@@ -110,8 +113,8 @@ export const getGeneralSettings: TypeController = async (req, res) => {
       entity: entities.general_setting,
     });
   }
-}
-//
+};
+
 export default {
   manageGeneralSetting,
   getGeneralSettings,

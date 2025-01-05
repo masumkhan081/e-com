@@ -1,6 +1,6 @@
  
 import { Schema, model } from "mongoose";
-import mongoose from "mongoose";
+
 
 const rider_schema = new Schema(
   {

@@ -1,6 +1,5 @@
- 
+
 import { Schema, model } from "mongoose";
-import mongoose from "mongoose";
 
 const banner_schema = new Schema(
   {

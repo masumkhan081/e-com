@@ -1,11 +1,11 @@
- 
+
 import { Schema, model } from "mongoose";
-import mongoose from "mongoose";
+
 
 const shop_schema = new Schema(
   {
     seller: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "users",
       required: true,
       unique: true,

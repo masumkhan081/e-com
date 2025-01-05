@@ -1,7 +1,7 @@
  
-import { entities } from "../../config/constants";
+import { entities } from "../../../config/constants";
 import Shop from "./shop.model";
-import { getSearchAndPagination } from "../../utils/pagination";
+import { getSearchAndPagination } from "../../../utils/pagination";
 import { mongoose } from "mongoose";
 //
 async function getShops(query) {

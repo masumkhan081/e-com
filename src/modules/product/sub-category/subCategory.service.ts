@@ -3,7 +3,7 @@ import { entities } from "../../../config/constants";
 import SubCategory from "./subCategory.model";
 import { getSearchAndPagination } from "../../../utils/pagination";
 import { ObjectId } from "mongodb";
-import mongoose from "mongoose";
+
 
 //
 async function getSingleSubCategory(updatableId) {

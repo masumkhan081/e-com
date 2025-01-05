@@ -6,9 +6,9 @@ const {
   sendUpdateResponse,
   sendSingleFetchResponse,
 } = require("../../utils/responseHandler");
-import { entities, allowed_roles } from "../../config/constants";
-import { removeFile } from "../../utils/fileHandle";
-import { fieldsMap, uploadHandler } from "../../utils/uploader";
+import { entities, allowed_roles } from "../../../config/constants";
+import { removeFile } from "../../../utils/fileHandle";
+import { fieldsMap, uploadHandler } from "../../../utils/uploader";
 //
 import Shop from "./shop.model";
 //

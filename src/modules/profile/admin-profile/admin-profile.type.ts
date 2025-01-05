@@ -1,12 +1,12 @@
 import { Document } from "mongoose";
 import { IDType } from "../../types/requestResponse";
 
-export interface IUnit extends Document {
+export interface ICreate extends Document {
   name: string;
 }
 
 // Update the interface to use IDType
-export interface IUnitUpdatePayload {
+export interface IUpdate {
   id: IDType;
-  data: Partial<IUnit>;
+  data: Partial<ICreate>;
 }

@@ -1,6 +1,6 @@
  
 import { Schema, model } from "mongoose";
-import mongoose from "mongoose";
+
 //
 const product_schema_in_cart = new Schema({
   product: {

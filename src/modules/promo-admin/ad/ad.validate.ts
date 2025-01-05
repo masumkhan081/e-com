@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 const ads_schema = z.object({
-  title: z.string().nonempty("Ad title is required."), 
-  is_active: z.boolean().default(false), 
+  title: z.string().nonempty("Ad title is required."),
+  is_active: z.boolean().default(false),
   display_page: z
     .enum(["Home page", "Contact us", "Product detail"], {
       errorMap: () => ({

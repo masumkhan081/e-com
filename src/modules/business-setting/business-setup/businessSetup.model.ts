@@ -1,6 +1,6 @@
  
 import { Schema, model } from "mongoose";
-import mongoose from "mongoose";
+
 //
 const businessSetupSchema = new Schema({
   company_name: {

@@ -1,4 +1,4 @@
-import { getHashedPassword } from "../../utils/tokenisation";
+import { getHashedPassword } from "../../../utils/tokenisation";
 
 function isPostBodyValid({ files, bodyData }) {
   const {

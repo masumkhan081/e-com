@@ -9,7 +9,7 @@ const {
   sendUpdateResponse,
 } = require("../../../utils/responseHandler");
 import { entities, allowed_roles } from "../../../config/constants";
-import Shop from "../../shop/shop.model";
+import Shop from "../../shop/shop/shop.model";
 import Coupon from "./coupon.model";
 //
 export const createCoupon: TypeController = async (req, res) => {
